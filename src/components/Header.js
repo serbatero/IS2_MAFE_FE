@@ -1,25 +1,44 @@
+//Dependencias
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
+//Assets
+import './css/Header.css';
 
 class Header extends Component {
+	static propTypes = {
+		items: PropTypes.array.isRequired
+	};
+
 	render() {
-		return (
-			
+		const { items } = this.props;
+
+		return (	
 				<nav className="navbar navbar-default ">
 						<div className="container">
+								<div className= "navbar-header">
+										<button type= "button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+												<span className="sr-only">Toggle navigation</span>
+												<span className="icon-bar"></span>
+												<span className="icon-bar"></span>
+												<span className="icon-bar"></span>
+										</button>
+										<a className="" href="/"><img scr="assets/img/logo.png" width='270px' height='150px' alt=''/></a>
+								</div>
+
 								<div className="collapse navbar-collapse yamm" id="navigation">
-										<img src="assets/img/logo.png" width="270px" height="150px" alt=""/>
 										<div className="button navbar-right">
-											 <button className="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('registro.html')" data-wow-delay="0.45s">Iniciar sesión</button>
-											 <button className="navbar-btn nav-button wow fadeInRight" onclick=" window.open('registro.html')" data-wow-delay="0.5s">Registro</button>
+												<button className="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s">Login</button>
+												<button className="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.48s">Submit</button>
 										</div>
-										<ul className="main-nav nav navbar-nav navbar-right">
-									 
-												<li className="wow fadeInDown" data-wow-delay="0.1s"><a  data-delay="200" href="index.html">Inicio</a></li>
-												<li className="wow fadeInDown" data-wow-delay="0.2s"><a className="" href="index.html">Materias</a></li>
-												<li className="wow fadeInDown" data-wow-delay="0.3s"><a className="" href="#">Docentes</a></li>
-												<li className="wow fadeInDown" data-wow-delay="0.4s"><a href="">Recursos</a></li>
-												<li className="wow fadeInDown" data-wow-delay="0.5s"><a href="#">Contáctenos</a></li>
-										</ul>
+										<u1 className="main-nav nav navbar-nav navbar-right">
+										{
+											items && items.map(
+												(item,key) => <li className="wow fadeInRight" data-wow-delay="1s" key={key}><Link to={item.url}>{item.title}</Link></li>
+											)
+										}
+										</u1>
 								</div>
 						</div>
 				</nav>			
