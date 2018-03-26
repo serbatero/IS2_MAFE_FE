@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from './Global/images/logo.svg';
+import '../App.css';
 //Componets
-import Header from './components/Header.js';
-import Slider from './components/Slider.js';
-import Footer from './components/Footer.js';
+import Header from './Global/Header.js';
+import Slider from './Global/Slider.js';
+import Footer from './Global/Footer.js';
 
 class App extends Component {
   render() {
