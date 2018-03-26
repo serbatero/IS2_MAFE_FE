@@ -3,18 +3,14 @@ import React, { Component } from 'react';
 class Footer extends Component {
   render() {
     return (
-      
         <div className="footer-area">
-
             <div className=" footer">
                 <div className="container">
                     <div className="row">
-
                         <div className="col-md-3 col-sm-6 wow fadeInRight animated">
                             <div className="single-footer">
                                 <h4>About us </h4>
                                 <div className="footer-title-line"></div>
-
                                 <img src="assets/img/footer-logo.png" alt="" className="wow pulse" data-wow-delay="1s"/>
                                 <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
                                 <ul className="footer-adress">
@@ -49,11 +45,10 @@ class Footer extends Component {
                                                 <img src="assets/img/demo/small-proerty-2.jpg"/>
                                             </a>
                                             <span className="blg-date">12-12-2016</span>
-
                                         </div>
                                         <div className="col-md-8  col-sm-8 col-xs-8  blg-entry">
                                             <h6> <a href="single.html">Add news functions </a></h6> 
-                                            {/*<p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>*/}
+                                            <p style={{lineHeight: '17px', padding: '8px 2px'}}>Lorem ipsum dolor sit amet, nulla ...</p>
                                         </div>
                                     </li> 
 
@@ -67,7 +62,7 @@ class Footer extends Component {
                                         </div>
                                         <div className="col-md-8  col-sm-8 col-xs-8  blg-entry">
                                             <h6> <a href="single.html">Add news functions </a></h6> 
-                                            {/*<p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>*/}
+                                            <p style={{lineHeight: '17px', padding: '8px 2px'}}>Lorem ipsum dolor sit amet, nulla ...</p>
                                         </div>
                                     </li> 
 
@@ -77,14 +72,12 @@ class Footer extends Component {
                                                 <img src="assets/img/demo/small-proerty-2.jpg"/>
                                             </a>
                                             <span className="blg-date">12-12-2016</span>
-
                                         </div>
                                         <div className="col-md-8  col-sm-8 col-xs-8  blg-entry">
                                             <h6> <a href="single.html">Add news functions </a></h6> 
-                                            {/*<p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>*/}
+                                            <p style={{lineHeight: '17px', padding: '8px 2px'}}>Lorem ipsum dolor sit amet, nulla ...</p>
                                         </div>
                                     </li> 
-
 
                                 </ul>
                             </div>
@@ -101,8 +94,7 @@ class Footer extends Component {
                                         <span className="input-group-btn">
                                             <button className="btn btn-primary subscribe" type="button"><i className="pe-7s-paper-plane pe-2x"></i></button>
                                         </span>
-                                    </div>
-                                    
+                                    </div>                                   
                                 </form> 
 
                                 <div className="social pull-right"> 
