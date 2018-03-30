@@ -17,22 +17,17 @@ constructor() {
               </Link>          
             </div>
      </div>
-     
     )}else{
     	return (
      <div className="button navbar-right">
            <Link  to="/login">
            <button className="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s">Login</button>
-           </Link> 
            <button className="navbar-btn nav-button wow fadeInRight"  data-wow-delay="0.48s">Submit</button>
+           </Link> 
      </div>
-     
+    
     )
-
     }
-
-
-
   }
 }
 
