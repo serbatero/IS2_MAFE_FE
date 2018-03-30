@@ -299,7 +299,7 @@ input[type="search"]::-webkit-search-decoration {
     border-radius: 1px;
     padding: 10px 20px;
     border: 1px solid #FDC600;
-    color: white;
+    color: #000;
     background-color: #FDC600;
     border-color: #F0F0F0;
     font-weight: 600;
@@ -443,14 +443,13 @@ input[type="search"]::-webkit-search-decoration {
     color: #333;
     font-size: 16px;
     border: 1px solid #EAE9E9;
-    width: 100px;
+    width: 40px;
     height: 40px;
     color: #FFF;
     transition: all 0.3s ease 0s; 
     padding: 0px;
 
 }
-
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
     background-color: #EEEEEE;
     color: #999999;
@@ -1009,7 +1008,8 @@ label small{
 
 .slider-area{
     position: relative;
-    height: 630px
+    height: 630px;
+    background: #555 url("../../assets/img/slider-image-2.jpg") repeat scroll 0% 0%;
 }
 #bg-slider .item img{
     width: 100%;
@@ -1026,9 +1026,8 @@ label small{
 .slider-content h2 {
     font-size: 40px; 
     margin-bottom: 20px;
-    text-transform: uppercase;color: #34B7C1;
+    text-transform: uppercase;color: rgba(255, 165, 0, 0.71);
 font-weight: 500;
-text-shadow: grey 0.05em 0.05em 0.1em;
 }
 .slider-content p {
     font-size: 14px;
@@ -2486,7 +2485,7 @@ count-area
     padding: 15px;
 }
 .search-form .form-inline .form-group { 
-    width: 350px;
+    width: 235px;
     text-align: left;
     letter-spacing: 0.5px;
 }

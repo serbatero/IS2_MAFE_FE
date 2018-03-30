@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // Assets
 import './css/Content.css';
 
-class Content.css extends Component {
+class Content extends Component {
 	static propTypes = {
 		body: PropTypes.object.isRequired
 	};

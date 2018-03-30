@@ -18,27 +18,27 @@ class Header extends Component {
 				<nav className="navbar navbar-default ">
 						<div className="container">
 								<div className= "navbar-header">
-										<button type= "button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+										<button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
 												<span className="sr-only">Toggle navigation</span>
 												<span className="icon-bar"></span>
 												<span className="icon-bar"></span>
 												<span className="icon-bar"></span>
 										</button>
-										<a className="" href="/"><img scr="assets/img/logo.png" width='270px' height='150px' alt=''/></a>
+										<a className="" href="/"><img src="assets/img/logo.png" width="270px" height="150px" alt=""/></a>
 								</div>
 
 								<div className="collapse navbar-collapse yamm" id="navigation">
 										<div className="button navbar-right">
 												<button className="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s">Login</button>
-												<button className="navbar-btn nav-button wow fadeInRight" data-wow-delay="0.48s">Submit</button>
+												<button className="navbar-btn nav-button wow fadeInRight"  data-wow-delay="0.48s">Submit</button>
 										</div>
-										<u1 className="main-nav nav navbar-nav navbar-right">
+										<ul className="main-nav nav navbar-nav navbar-right">
 										{
 											items && items.map(
-												(item,key) => <li className="wow fadeInRight" data-wow-delay="1s" key={key}><Link to={item.url}>{item.title}</Link></li>
+												(item, key) => <li className="wow fadeInDown" data-wow-delay="1s" key={key}><Link  to={item.url}>{item.title}</Link></li>
 											)
 										}
-										</u1>
+										</ul>
 								</div>
 						</div>
 				</nav>			

@@ -16,13 +16,11 @@ class Footer extends Component {
                         <div className="row">
                             <div className="col-md-3 col-sm-6 wow fadeInRight animated">
                                 <div className="single-footer">
-                                    <h4>Quienes somos? </h4>
+                                    <h4>Quienes somos </h4>
                                     <div className="footer-title-line" />
-                                    <img src="assets/img/logo.png" alt="logo" className="wow pulse" data-wow-delay="1s"  height="200px"/>
                                     <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
                                     <ul className="footer-adress">
-                                        <li><i className="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
-                                        <li><i className="pe-7s-mail strong"> </i> email@yourcompany.com</li>
+                                        <li><i className="pe-7s-mail strong"> </i> yodah@mafe.com</li>
                                         <li><i className="pe-7s-call strong"> </i> +1 908 967 5906</li>
                                     </ul>
                                 </div>
@@ -60,7 +58,7 @@ class Footer extends Component {
                             </div>
                             <div className="col-md-3 col-sm-6 wow fadeInRight animated">
                                 <div className="single-footer news-letter">
-                                    <h4>Contácto</h4>
+                                    <h4>Contáctenos</h4>
                                     <div className="footer-title-line" />
                                     <p>Lorem ipsum dolor sit amet, nulla  suscipit similique quisquam molestias. Vel unde, blanditiis.</p>
                                     <form>

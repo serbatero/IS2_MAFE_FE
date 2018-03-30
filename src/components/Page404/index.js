@@ -1,7 +1,7 @@
 //Dependencias
-import React, { Componet } from 'react';
+import React, { Component } from 'react';
 
-class Page404 extends Componet{
+class Page404 extends Component{
 	render(){
 		return(
 			<div className="content-area error-page" style={{backgroundColor: '#FCFCFC', paddingBottom: 55}}>
