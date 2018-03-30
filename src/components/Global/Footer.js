@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+
 class Footer extends Component {
   static propTypes = {
     items: PropTypes.array.isRequired
@@ -46,15 +47,7 @@ class Footer extends Component {
                   <h4>Últimas noticias</h4>
                   <div className="footer-title-line" />
                   <ul className="footer-blog">
-                    <li>
-                      
-                    </li> 
-                    <li>
-                      
-                    </li> 
-                    <li>
-                     
-                    </li> 
+                  
                   </ul>
                 </div>
               </div>
