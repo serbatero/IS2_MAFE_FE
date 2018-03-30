@@ -1,7 +1,23 @@
 // Dependencies
 import React, { Component } from 'react';
-import Title from '../Global/Title'
-class About extends Component {
+import Title from '../Global/Title';
+class Materias extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { data_a: [] }
+    
+  }
+ 
+ componentWillMount() {
+    fetch('http://localhost:3000/courses')
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        this.setState({ data_a: data })
+        console.log(data)
+      })
+  }
   render() {
     return (
      <div>
@@ -11,4 +27,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default Materias;
