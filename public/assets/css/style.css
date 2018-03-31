@@ -1592,6 +1592,10 @@ padding: 0 0 0.5em;
 .padding-top-25{
     padding-top: 25px;
 }
+.padding-profile{
+    padding-top: 25px;
+    padding-left: 70px;
+}
 .padding-top-40{
     padding-top: 40px;
 }
