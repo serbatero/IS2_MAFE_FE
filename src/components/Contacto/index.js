@@ -21,6 +21,7 @@ class Contacto extends Component {
 
         this.handleInput =this.handleInput.bind(this);
         this.validar = this.validar.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
 	}
 
@@ -30,6 +31,7 @@ class Contacto extends Component {
         this.setState({
             [e.target.name]:e.target.value
         });
+
         
     };
 
@@ -72,8 +74,23 @@ class Contacto extends Component {
 
 
 
-	onSubmit(){
+	onSubmit(e){
+
 		console.log(this.state);
+        e.preventDefault();
+        this.setState( {
+            nombre : '',
+            nombreErr :'',
+            apellido : '',
+            apellidoErr: '',
+            correo : '',
+            correoErr : '',
+            asunto : '',
+            asuntoErr : '',
+            mensaje : '',
+            mensajeErr: ''
+
+        });
         
 		
 	};
@@ -119,7 +136,7 @@ class Contacto extends Component {
                         </div>
                     </div>
                     <div className="col-sm-12 text-center">
-                        <button type="submit" className="btn btn-primary" onClick ={this.onSubmit.bind(this)}><i className="fa fa-envelope-o"  ></i> Enviar mensaje</button>
+                        <button type="submit" className="btn btn-primary" onClick ={this.onSubmit}><i className="fa fa-envelope-o"  ></i> Enviar mensaje</button>
                     </div>
 
                 </div>
