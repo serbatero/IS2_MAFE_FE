@@ -106,32 +106,32 @@ class Contacto extends Component {
                 <div className="row">
                     <div className="col-sm-6">
                         <div className="form-group">
-                            <label for="firstname" color='red'>Nombre(s) &nbsp; <font color='red'> {this.state.nombreErr}</font></label>
+                            <label  color='red'>Nombre(s) &nbsp; <font color='red'> {this.state.nombreErr}</font></label>
                             <input type="text" className="form-control" id="firstname" name ='nombre'value={this.state.nombre} onChange = {this.handleInput}onBlur = {this.validar} required/>                        
                         </div>
                     </div>
                     <div className="col-sm-6">
                         <div className="form-group">
-                            <label for="lastname">Apellido(s) &nbsp; <font color='red'> {this.state.apellidoErr}</font></label>
+                            <label >Apellido(s) &nbsp; <font color='red'> {this.state.apellidoErr}</font></label>
                             <input type="text" className="form-control" id="lastname" name ='apellido' value={this.state.apellido} onChange = {this.handleInput} onBlur = {this.validar} required/>
                         </div>
                     </div>
                     <div className="col-sm-6">
                         <div className="form-group">
-                            <label for="email">Correo Electronico &nbsp; <font color='red'> {this.state.correoErr}</font></label>
+                            <label >Correo Electronico &nbsp; <font color='red'> {this.state.correoErr}</font></label>
                             <input type="text" className="form-control" id="email" name='correo'value={this.state.correo} onChange = {this.handleInput} onBlur = {this.validar}required/>
                         </div>
                     </div>
                     <div className="col-sm-6">
                         <div className="form-group">
-                            <label for="subject">Asunto &nbsp; {this.state.asuntoErr}</label>
+                            <label >Asunto &nbsp; {this.state.asuntoErr}</label>
                             <input type="text" className="form-control" id="subject" name ='asunto'value={this.state.asunto} onChange = {this.handleInput } onBlur = {this.validar} required/>
 
                         </div>
                     </div>
                     <div className="col-sm-12">
                         <div className="form-group">
-                            <label for="message">Mensaje &nbsp; {this.state.mensajeErr}</label>
+                            <label >Mensaje &nbsp; {this.state.mensajeErr}</label>
                             <textarea id="message" className="form-control" name='mensaje'value = {this.state.mensaje} onChange = {this.handleInput }></textarea>
                         </div>
                     </div>
