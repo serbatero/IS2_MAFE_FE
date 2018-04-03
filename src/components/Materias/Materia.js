@@ -16,10 +16,11 @@ class Materia extends Component {
 						<img src={Image}  alt=""/>
 					</div>
 					<div className="item-entry overflow">
-						<h5><a> Nombre: </a>{this.props.name}</h5>
+						<h5><a>{this.props.name}</a></h5>
 						<div className="dot-hr"></div>
 						<span className="pull-left"><b> Codigo :</b> {this.props.code} </span>
 						<span className="proerty-price pull-right"> {this.props.id}</span>
+						<span className="proerty-price pull-left"> <b></b> {this.props.link}</span>
 						<p style={{display: undefined}}></p>
 						<div className="property-icon">
 							<img src={Like} alt=""/>(2)

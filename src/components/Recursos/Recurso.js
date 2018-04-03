@@ -16,7 +16,7 @@ class Recurso extends Component {
 						<img src={Image}  alt=""/>
 					</div>
 					<div className="item-entry overflow">
-						<h5><a> Nombre: </a>{this.props.name}</h5>
+						<h5><a>{this.props.name}</a></h5>
 						<div className="dot-hr"></div>
 						<span className="pull-left"><b> Score :</b> {this.props.scoreresource_id} </span>
 						<span className="proerty-price pull-left"> <b>Link:</b> {this.props.link}</span>

@@ -1,17 +1,17 @@
-//Dependencias
+// Dependencies
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-//Rutas
+// Routes
 import AppRoutes from './routes';
 
-//Assets
+// Assets
 import './index.css';
 
 render(
-	<Router>
-		<AppRoutes />
-	</Router>,
-	document.getElementById('root')
+  <Router>
+    <AppRoutes />
+  </Router>,
+  document.getElementById('root')
 );

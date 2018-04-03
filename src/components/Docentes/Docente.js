@@ -6,7 +6,6 @@ import Like from '../Global/images/like.png';
 import Dislike from '../Global/images/dislike.png';
 import Image from '../Global/images/perfil.png';
 
-
 class Docente extends Component {
 	render(){
 		return(
@@ -16,7 +15,7 @@ class Docente extends Component {
 						<img src={Image}  alt=""/>
 					</div>
 					<div className="item-entry overflow">
-						<h5><a> Nombre: </a>{this.props.name}</h5>
+						<h5><a>{this.props.name}</a></h5>
 						<div className="dot-hr"></div>
 						<span className="pull-left"><b> Score :</b> {this.props.scoreteacher_id} </span>
 						<span className="proerty-price pull-left"> <b> Descripcion :</b> {this.props.description}</span>

@@ -1,4 +1,3 @@
-// Dependencias
 import React, { Component } from 'react';
 
 class Busqueda extends Component {
@@ -33,7 +32,7 @@ class Busqueda extends Component {
 											</select>
 										</div>
 										<div className="col-xs-6">
-											<label for="price-range">Score range:</label>
+											<label >Score range:</label>
 											<input type="text" className="span2" value="" data-slider-min="0" data-slider-max="5" data-slider-step="1" data-slider-value="[0,5]" id="price-range" /><br />
 											<b className="pull-left color">0</b>
 											<b className="pull-right color">5</b>
@@ -53,53 +52,7 @@ class Busqueda extends Component {
 						</div>
 					</div>
 
-					<div className="panel panel-default sidebar-menu wow fadeInRight animated">
-						<div className="panel-heading">
-							<h3 className="panel-title">Recommended</h3>
-						</div>
-						<div className="panel-body recent-property-widget">
-							<ul>
-							<li>
-								<div className="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-									<img className="book-png" src={require("../Global/images/book.png")} alt=""/>
-								</div>
-								<div className="col-md-8 col-sm-8 col-xs-8 blg-entry">
-									<h6> <a href="single.html">Super nice villa </a></h6>
-									<span className="property-price">3000000$</span>
-								</div>
-							</li>
-							<li>
-								<div className="col-md-3 col-sm-3  col-xs-3 blg-thumb p0">
-									<img className="book-png" src={require("../Global/images/book.png")} alt=""/>
-								</div>
-								<div className="col-md-8 col-sm-8 col-xs-8 blg-entry">
-									<h6> <a href="single.html">Super nice villa </a></h6>
-									<span className="property-price">3000000$</span>
-								</div>
-							</li>
-							<li>
-								<div className="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-									<img className="book-png" src={require("../Global/images/book.png")} alt=""/>
-								</div>
-								<div className="col-md-8 col-sm-8 col-xs-8 blg-entry">
-									<h6> <a href="single.html">Super nice villa </a></h6>
-									<span className="property-price">3000000$</span>
-								</div>
-							</li>
-
-							<li>
-								<div className="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-									<img className="book-png" src={require("../Global/images/book.png")} alt=""/>
-								</div>
-								<div className="col-md-8 col-sm-8 col-xs-8 blg-entry">
-									<h6> <a href="single.html">Super nice villa </a></h6>
-									<span className="property-price">3000000$</span>
-								</div>
-							</li>
-
-							</ul>
-						</div>
-					</div>
+			
 				</div>
 			</div>
 		);
