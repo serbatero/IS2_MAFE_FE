@@ -1825,7 +1825,12 @@ proerty-th-list
     border: none;
 }
 .properties-page .box-two { 
-    overflow: hidden !important; 
+    overflow: hidden !important;
+    min-height: 480px; 
+} 
+.properties-page .box-two1 { 
+    overflow: hidden !important;
+    min-height: 450px; 
 } 
 .proerty-th-list  .proerty-item .item-entry h5 {
     text-transform: uppercase;
@@ -1834,7 +1839,14 @@ proerty-th-list
     letter-spacing: 2px;
     position: relative;
 }
-
+.limit{
+    max-height: 50px;
+    overflow-y: hidden;
+}
+.limit1{
+    max-height: 35px;
+    overflow-y: hidden;
+}
 .proerty-th-list .proerty-price{
     font-weight: 600;
     color: #FDC600;
