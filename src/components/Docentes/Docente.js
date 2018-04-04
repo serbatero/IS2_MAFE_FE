@@ -18,8 +18,8 @@ class Docente extends Component {
 						<h5><a>{this.props.name}</a></h5>
 						<div className="dot-hr"></div>
 						<span className="pull-left"><b> Score :</b> {this.props.scoreteacher_id} </span>
-						<span className="proerty-price pull-left"> <b> Descripcion :</b> {this.props.description}</span>
-						<p style={{display: undefined}}></p>
+						<span className="proerty-price pull-left limit"> <b> Descripcion :</b> {this.props.description}</span>
+				
 						<div className="property-icon">
 							<img src={Like} alt=""/>(2)
 							<img src={Dislike} alt=""/>(1)  

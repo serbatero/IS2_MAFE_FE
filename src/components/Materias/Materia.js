@@ -11,7 +11,7 @@ class Materia extends Component {
 	render(){
 		return(
 			<div className="col-sm-6 col-md-4 p0">
-				<div className="box-two proerty-item">
+				<div className="box-two1 proerty-item">
 					<div className="item-thumb" >
 						<img src={Image}  alt=""/>
 					</div>

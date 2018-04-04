@@ -16,10 +16,10 @@ class Recurso extends Component {
 						<img src={Image}  alt=""/>
 					</div>
 					<div className="item-entry overflow">
-						<h5><a>{this.props.name}</a></h5>
+						<h5 className="limit1" ><a>{this.props.name}</a></h5>
 						<div className="dot-hr"></div>
 						<span className="pull-left"><b> Score :</b> {this.props.scoreresource_id} </span>
-						<span className="proerty-price pull-left"> <b>Link:</b> {this.props.link}</span>
+						<span className="proerty-price pull-left limit"> <b>Link:</b> {this.props.link}</span>
 						<p style={{display: undefined}}></p>
 						<div className="property-icon">
 							<img src={Like} alt=""/>(2)

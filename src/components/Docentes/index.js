@@ -17,7 +17,7 @@ constructor() {
         return response.json()
       })
       .then((data) => {
-       this.setState({ data_a: data ,page :2})
+       this.setState({ data_a: data, count: 2 })
       })
       this.handleCountClick = this.handleCountClick.bind(this);
   }
@@ -58,7 +58,7 @@ constructor() {
             <div className="pagination">
                 <ul>
                   <button type="submit" id = "subtract"onClick={this.handleCountClick} className="btn btn-default">Prev</button>
-                  <button type="submit" className="btn btn-default">{this.state.count}</button>
+                  <button type="submit" className="btn btn-default">{this.state.count-1}</button>
                   <button type="submit" id = "add"onClick={this.handleCountClick} className="btn btn-default">Next</button>
                 </ul>
             </div>

@@ -1,6 +1,7 @@
 // Dependencies
 import React, { Component } from 'react';
 import Title from '../Global/Title'
+import baseURL from '../../url'
 class Contacto extends Component {
     constructor(props){
         super(props);
@@ -22,6 +23,7 @@ class Contacto extends Component {
         this.handleInput =this.handleInput.bind(this);
         this.validar = this.validar.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+
 
     }
 
@@ -91,8 +93,21 @@ class Contacto extends Component {
             mensajeErr: ''
 
         });
-        
-        
+
+      const contactParams = {"name": this.state.nombre, "lastname": this.state.apellido,
+      "email": this.state.correo, "subject": this.state.asunto, "message": this.state.mensaje}
+      const body = JSON.stringify(contactParams)
+      return fetch(`${baseURL}/contacts`, {
+      method: 'post',
+      body: body,
+      headers: {
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      }
+      })
+      .then((res) => {
+        return res.json()
+      })   
     };
 
 
