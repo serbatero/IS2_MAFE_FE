@@ -37,16 +37,16 @@ class Contacto extends Component {
         
     };
 
-    validar(){
+    validar(e){
 
-        if (this.state.nombre.length <3 && this.state.nombre.length!==0){
+        if ((this.state.nombre.length <3 && this.state.nombre.length!==0)|| ((this.state.nombre === "")&&(e.target.name ==='nombre'))){
             this.setState({nombreErr: 'No es nombre valido'});
         }
 
         if(this.state.nombre.length >=3){
             this.setState({nombreErr: ''});
         }
-        if (this.state.apellido.length <3 && this.state.apellido.length!==0){
+        if ((this.state.apellido.length <3 && this.state.apellido.length!==0) || ((this.state.apellido === "")&&(e.target.name ==='apellido'))){
             console.log(this.state.apellido.length);
             this.setState({apellidoErr: 'No es apellido valido'});
         }
@@ -54,7 +54,7 @@ class Contacto extends Component {
         if(this.state.apellido.length >=3){
             this.setState({apellidoErr: ''});
         }
-        if(this.state.correo.indexOf('@') === -1 && this.state.correo.length !==0){
+        if((this.state.correo.indexOf('@') === -1 && this.state.correo.length !==0)||((this.state.correo === "")&&(e.target.name ==='correo'))){
             this.setState({correoErr: 'No es una direccion de correo'});
         }
 
@@ -64,7 +64,7 @@ class Contacto extends Component {
 
 
 
-        if (this.state.asunto.length <3 && this.state.asunto.length!==0){
+        if ((this.state.asunto.length <3 && this.state.asunto.length!==0)||((this.state.asunto === "")&&(e.target.name ==='asunto'))){
             this.setState({asuntoErr: 'No es asunto valido'});
         }
 
@@ -80,7 +80,14 @@ class Contacto extends Component {
 
         console.log(this.state);
         e.preventDefault();
-        this.setState( {
+        if((this.state.nombreErr !=="")||(this.state.apellidoErr !== "") ||(this.state.asuntoErr !== "") ||(this.state.correoErr !== "") ){
+           alert("Digite los campos señalados"); 
+        }else{
+            alert("Su mensaje ha sido enviado");
+        }
+        
+
+       /* this.setState( {
             nombre : '',
             nombreErr :'',
             apellido : '',
@@ -92,7 +99,7 @@ class Contacto extends Component {
             mensaje : '',
             mensajeErr: ''
 
-        });
+        });*/
 
       const contactParams = {"name": this.state.nombre, "lastname": this.state.apellido,
       "email": this.state.correo, "subject": this.state.asunto, "message": this.state.mensaje}
@@ -139,14 +146,14 @@ class Contacto extends Component {
                     </div>
                     <div className="col-sm-6">
                         <div className="form-group">
-                            <label >Asunto &nbsp; {this.state.asuntoErr}</label>
+                            <label >Asunto &nbsp; <font color='red'>{this.state.asuntoErr}</font></label>
                             <input type="text" className="form-control" id="subject" name ='asunto'value={this.state.asunto} onChange = {this.handleInput } onBlur = {this.validar} required/>
 
                         </div>
                     </div>
                     <div className="col-sm-12">
                         <div className="form-group">
-                            <label >Mensaje &nbsp; {this.state.mensajeErr}</label>
+                            <label >Mensaje &nbsp; <font>{this.state.mensajeErr}</font></label>
                             <textarea id="message" className="form-control" name='mensaje'value = {this.state.mensaje} onChange = {this.handleInput }></textarea>
                         </div>
                     </div>
