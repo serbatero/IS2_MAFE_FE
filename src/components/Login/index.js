@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import Title from '../Global/Title';
 import { obtenerDatos } from './obtenerDatos';
+import { loginUser } from './loginUser';
 import Loginform from './Loginform'
-import Registerform from './Registerform'
+
 import Profile from './Profile'
 
 class Login extends Component {
@@ -18,6 +19,7 @@ constructor() {
         this.setState({ s_users: users })
       })
     }
+
   }
   render() {
       if (localStorage.getItem('jwtToken')) {
@@ -27,10 +29,9 @@ constructor() {
     } else {
     return (
        	<div>
-      	<Title title='Login / Sign in'/>
+      	<Title title='Login'/>
         <div className="register-area" style={{backgroundColor: 'rgb(249, 249, 249)'}}>
         <div className="container">
-          <Registerform />
           <Loginform />
         </div>
       </div>

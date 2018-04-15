@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { enviarDatos } from './enviarDatos';
-
+import Title from '../Global/Title';
 class Registerform extends Component {
 constructor() {
     super();
@@ -71,6 +71,8 @@ constructor() {
     if(this.state.registrado === 1){
 
       return(<div>
+        <div className="register-area" style={{backgroundColor: 'rgb(249, 249, 249)'}}>
+        <div className="container">
         <div className="col-md-6">
        <div className="box-for overflow">
         <div className="col-md-12 col-xs-12 register-blocks">
@@ -83,10 +85,15 @@ constructor() {
           </div>
       </div>
     </div>
+      </div>
+      </div>
       </div>)
 
     }else
-     return(
+     return(<div>
+      <Title title='Register'/>
+       <div className="register-area" style={{backgroundColor: 'rgb(249, 249, 249)'}}>
+        <div className="container">
           <div className="col-md-6">
        <div className="box-for overflow">
         <div className="col-md-12 col-xs-12 register-blocks">
@@ -110,6 +117,9 @@ constructor() {
           </form>
         </div>
       </div>
+    </div>
+    </div>
+    </div>
     </div>
       )
     }

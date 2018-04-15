@@ -9,6 +9,7 @@ class Profile extends Component {
 
 handleFinish(e){
      localStorage.removeItem('jwtToken')
+     localStorage.removeItem('googleToken')
      window.location.reload()
   }
 

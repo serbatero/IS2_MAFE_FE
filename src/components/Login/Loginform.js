@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { loginUser } from './loginUser';
 import { obtenerDatos } from './obtenerDatos';
-
+import GoogleLogin from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
 class Loginform extends Component {
 constructor() {
     super();
@@ -10,8 +11,9 @@ constructor() {
   }
 
   componentWillMount(){
-     if (localStorage.getItem('jwtToken')) {
-      obtenerDatos(localStorage.getItem('jwtToken')).then((users) => {
+    //obtener datos del token jwt en el link users
+    if (localStorage.getItem('jwtToken')) {
+      obtenerDatos(localStorage.getItem('jwtToken'),'users').then((users) => {
         this.setState({ s_users: users })
       })
     }
@@ -30,10 +32,11 @@ constructor() {
     }
   }
 
+
   handleSubmit = (e) =>{
-     e.preventDefault()
+       e.preventDefault()
       const loginParams = {"auth": {"email": this.state.email, "password": this.state.password}}
-      loginUser(loginParams).then((token) => {
+      loginUser(loginParams,'user_token').then((token) => {
       localStorage.setItem("jwtToken", token.jwt)
     }).then(  this.setState({error: null}) ).catch((error) => {
       this.setState({error: "Email o contraseña incorrecta"})
@@ -41,7 +44,21 @@ constructor() {
     if(this.state.error === null){
     setTimeout(function(){document.location.reload()},1000);
     }
+
   }
+
+
+
+  responseGoogle = (response) => {
+  //console.log(response);
+  //console.log(response.profileObj);
+  localStorage.setItem("googleToken", response.tokenId);
+    setTimeout(function(){document.location.reload()},1000);
+    
+}
+
+
+
   render() {
      return(
           <div className="col-md-6">
@@ -65,9 +82,18 @@ constructor() {
                   </div>
                 </form>
                 <br />
+                   <GoogleLogin
+              clientId="632745193287-uoccb1hhi2fi0lljofc91b463l1efffn.apps.googleusercontent.com"
+               buttonText="Login"
+               onSuccess={this.responseGoogle}
+                onFailure={this.responseGoogle}
+                />
+
               </div>
+                
             </div>
           </div>
+          
       )
     }
   
