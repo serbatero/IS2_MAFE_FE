@@ -8,13 +8,39 @@ import Content from './Global/Content';
 import Footer from './Global/Footer';
 // Data
 import items from '../data/menu';
+import store from '../store';
+import { obtenerDatos } from './Login/obtenerDatos';
 
 class App extends Component {
-  static propTypes = {
+
+constructor() {
+    super()
+    this.state = {  s_users: []}
+    
+  }
+ 
+  componentWillMount(){
+     if (localStorage.getItem('jwtToken')) {
+      obtenerDatos(localStorage.getItem('jwtToken')).then((users) => {
+        this.setState({ s_users: users })
+      })
+    }
+  }
+
+   static propTypes = {
     children: PropTypes.object.isRequired
   };
 
-  render() {
+  render() {  
+    if (localStorage.getItem('jwtToken')) {
+    store.dispatch({
+         type: "ADD_TO_STORE",
+         id: this.state.s_users.id,
+         username: this.state.s_users.username,
+         email: this.state.s_users.email,
+         avatar: this.state.s_users.avatar,
+         career_id: this.state.s_users.career_id
+     })}
     const { children } = this.props;
     return (
       <div >

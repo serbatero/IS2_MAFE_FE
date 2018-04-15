@@ -1592,6 +1592,10 @@ padding: 0 0 0.5em;
 .padding-top-25{
     padding-top: 25px;
 }
+.padding-profile{
+    padding-top: 25px;
+    padding-left: 70px;
+}
 .padding-top-40{
     padding-top: 40px;
 }
@@ -1821,7 +1825,12 @@ proerty-th-list
     border: none;
 }
 .properties-page .box-two { 
-    overflow: hidden !important; 
+    overflow: hidden !important;
+    min-height: 480px; 
+} 
+.properties-page .box-two1 { 
+    overflow: hidden !important;
+    min-height: 450px; 
 } 
 .proerty-th-list  .proerty-item .item-entry h5 {
     text-transform: uppercase;
@@ -1830,7 +1839,14 @@ proerty-th-list
     letter-spacing: 2px;
     position: relative;
 }
-
+.limit{
+    max-height: 50px;
+    overflow-y: hidden;
+}
+.limit1{
+    max-height: 35px;
+    overflow-y: hidden;
+}
 .proerty-th-list .proerty-price{
     font-weight: 600;
     color: #FDC600;
@@ -2112,11 +2128,12 @@ single property page
     clear: both;
 }
 .dealer-face img{
-    opacity: 0.7
+    opacity: 0.7;
+    border: 2px solid #FFA500;
 }
 .dealer-face img:hover{
     opacity: 0.9;
-    border: 2px solid #FFF;
+    border: 2px solid #FFA500;
 }
 .dealer-social-media a{
     color: #969696;
