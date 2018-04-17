@@ -9,7 +9,7 @@ import Footer from './Global/Footer';
 // Data
 import items from '../data/menu';
 import store from '../store';
-import { obtenerDatos, pPost } from './Login/obtenerDatos';
+import { obtenerDatos } from './Login/obtenerDatos';
 
 class App extends Component {
 
@@ -25,13 +25,6 @@ constructor() {
         this.setState({ s_users: users })
       })
     }
-    if (localStorage.getItem('googleToken')) {
-      const loginParams = {"token": localStorage.getItem('googleToken')}
-      pPost(loginParams,'googles').then((users) => {
-        
-        this.setState({ s_users: users[0] })
-      })
-    }
   }
 
    static propTypes = {
@@ -39,7 +32,7 @@ constructor() {
   };
 
   render() {  
-    console.log(this.state.s_users);
+    console.log(this.state.s_users)
     if (localStorage.getItem('jwtToken')) {
     store.dispatch({
          type: "ADD_TO_STORE",

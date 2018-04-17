@@ -29,3 +29,16 @@ export function pPost(loginParams,link){
       }
      )
 }
+
+export function pGet(link){
+  return fetch(`${baseURL}/${link}`, {
+      headers: new Headers({
+     "Content-Type":"application/json",
+      "Accept":"application/json"
+   }), 
+    })
+      .then((res) => {
+        return res.json()
+      }
+     )
+}

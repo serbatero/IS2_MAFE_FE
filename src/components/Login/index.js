@@ -2,9 +2,7 @@
 import React, { Component } from 'react';
 import Title from '../Global/Title';
 import { obtenerDatos } from './obtenerDatos';
-import { loginUser } from './loginUser';
 import Loginform from './Loginform'
-
 import Profile from './Profile'
 
 class Login extends Component {
