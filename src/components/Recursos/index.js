@@ -1,5 +1,5 @@
 // Dependencias
-import React, { Component } from 'react';
+import React from 'react';
 
 //Componentes
 import Listado from './Listado.js';

@@ -5,7 +5,6 @@ import React from 'react';
 
 import Listado from './Listado.js';
 import Individual from './Individual.js';
-import baseURL from '../../url'
 import { Switch, Route } from "react-router-dom";
 
 const Index = ({ match }) => (

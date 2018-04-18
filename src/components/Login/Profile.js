@@ -5,12 +5,17 @@ class Profile extends Component {
   constructor() {
     super();
     this.handleFinish.bind(this);
+
   }
 
 handleFinish(e){
      localStorage.removeItem('jwtToken')
      localStorage.removeItem('googleToken')
      window.location.reload()
+  }
+
+  handleSubmitImage=(e)=>{
+ console.log(e.target.files[0])
   }
 
   render() {
@@ -41,7 +46,7 @@ handleFinish(e){
                     <div className="picture-container">
                       <div className="picture">
                         <img src={`${store.getState().avatar}`} alt ="" className="picture-src" id="wizardPicturePreview"/>
-                        <input type="file" id="wizard-picture" />
+                        <input type="file" id="wizard-picture" onClick={this.handleSubmitImage} />
                       </div>
                     </div>
                   </div>

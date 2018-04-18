@@ -1,7 +1,7 @@
 // Dependencias
 import React, { Component } from 'react';
 import Recurso from './Recurso.js';
-import { Link } from 'react-router-dom'
+
 class Contenido extends Component {
 	
 	render(){

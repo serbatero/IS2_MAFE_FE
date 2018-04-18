@@ -1,13 +1,10 @@
 // Dependencias
-import React, { Component } from 'react';
+import React from 'react';
 
 //Componentes
-import Title from '../Global/Title';
-import Busqueda from '../Global/Busqueda.js';
-import Contenido from './Contenido.js';
+
 import Listado from './Listado.js';
 import Individual from './Individual.js';
-import baseURL from '../../url'
 import { Switch, Route } from "react-router-dom";
 
 const Index = ({ match }) => (

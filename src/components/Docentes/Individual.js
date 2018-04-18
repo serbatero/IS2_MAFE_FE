@@ -1,6 +1,6 @@
 import React, { Component} from "react";
 import { Link } from "react-router-dom";
-import baseURL from '../../url'
+import baseURL from '../../url';
 import Title from '../Global/Title';
 class Individual extends Component {
 constructor() {
