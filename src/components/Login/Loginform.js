@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { loginUser } from './loginUser';
 import { obtenerDatos } from './obtenerDatos';
+import swal from 'sweetalert2'
 
 class Loginform extends Component {
 constructor() {
@@ -40,7 +41,16 @@ constructor() {
     });
     if(this.state.error === null){
     setTimeout(function(){document.location.reload()},1000);
+    swal({
+      title:'Cargando...',
+      text:'',
+      timer:5000,
+      onOpen: () =>{
+        swal.showLoading()
+      }
+    })
     }
+    
   }
   render() {
      return(

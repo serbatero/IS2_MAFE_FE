@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { enviarDatos } from './enviarDatos';
+import swal from 'sweetalert2'
 
 class Registerform extends Component {
 constructor(props) {
     super(props);
-    this.state = { email: "", password: "", name: "u", registrado: 0, nameErr:"", emailErr:"", passErr:"", validacionbackuser:"", validacionbackemail:"",todos:[]}
+    this.state = { email: "", password: "", name: "", registrado: 0, nameErr:"", emailErr:"", passErr:"", validacionbackuser:"", validacionbackemail:"",todos:[]}
 
     this.validar = this.validar.bind(this);
     this.vali = this.vali.bind(this);
@@ -86,7 +87,7 @@ constructor(props) {
         var j
         for(j=0; j<todoList.length;j++){
 
-          console.log(e.target.value)
+          
             if (todoList[j]===e.target.value){
               this.setState({validacionbackuser:'El nombre de usuario ya está en uso'})
             }
@@ -120,11 +121,17 @@ constructor(props) {
     "password_confirmation":  this.state.password,
     "avatar": "https://robohash.org/quasiquianihil.png?size=300x300&set=set1"
     }
-    enviarDatos(loginParams).then((token) => {
+   if((this.state.nameErr !=="")||(this.state.emailErr !== "") ||(this.state.passErr !== "") ||(this.state.validacionbackuser !== "") || (this.state.validacionbackemail !== "") || (this.state.name === "") || (this.state.email === "") || (this.state.password === "")){
+           swal("Digite los campos señalados",'','error'); 
+    }else{
+            swal("Se ha registrado exitosamente",'','success');
+            enviarDatos(loginParams).then((token) => {
       //localStorage.setItem("jwtToken", token.jwt)
     }).then(  this.setState({registrado: 1}) ).catch((error) => {
      // this.setState({error: "Email o contraseña incorrecta"})
     });
+        }
+    
 
   }
   render() {
@@ -139,7 +146,7 @@ constructor(props) {
 
     
     if(this.state.registrado === 1){
-      console.log("entra if")
+     
 
       return(<div>
         <div className="col-md-6">

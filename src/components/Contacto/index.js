@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Title from '../Global/Title'
 import baseURL from '../../url'
+import swal from 'sweetalert2'
 class Contacto extends Component {
     constructor(props){
         super(props);
@@ -81,9 +82,9 @@ class Contacto extends Component {
         console.log(this.state);
         e.preventDefault();
         if((this.state.nombreErr !=="")||(this.state.apellidoErr !== "") ||(this.state.asuntoErr !== "") ||(this.state.correoErr !== "") ){
-           alert("Digite los campos señalados"); 
+           swal("Digite los campos señalados",'','error'); 
         }else{
-            alert("Su mensaje ha sido enviado");
+            swal("Su mensaje ha sido enviado",'','success');
         }
         
 
@@ -129,7 +130,7 @@ class Contacto extends Component {
                     <div className="col-sm-6">
                         <div className="form-group">
                             <label  color='red'>Nombre(s) &nbsp; <font color='red'> {this.state.nombreErr}</font></label>
-                            <input type="text" className="form-control" id="firstname" name ='nombre'value={this.state.nombre} onChange = {this.handleInput}onInput = {this.validar} required/>                        
+                            <input type="text" className="form-control" id="firstname" name ='nombre'value={this.state.nombre} onChange = {this.handleInput}onInput = {this.validar} onBlur = {this.validar}required/>                        
                         </div>
                     </div>
                     <div className="col-sm-6">
