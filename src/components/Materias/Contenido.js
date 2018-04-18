@@ -11,7 +11,9 @@ class Contenido extends Component {
 				<div className="col-md-12 clear"> 
 					<div id="list-type" className="proerty-th">
 						{this.props.listado.map((materia)=>{
-								return <Materia key={materia.id} name={materia.name} code={materia.code} />
+								return (
+								<Materia key={materia.id} name={materia.name} code={materia.code} id = {materia.id} />
+								)
 							})
 						}
 					</div>

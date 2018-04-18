@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from 'firebase'
 // Routes
-import AppRoutes from './routes';
+import App from './components/App';
 
 // Assets
 import './index.css';
@@ -20,7 +20,7 @@ firebase.initializeApp({
 })
 render(
   <Router>
-    <AppRoutes />
+    <App />
   </Router>,
   document.getElementById('root')
 );

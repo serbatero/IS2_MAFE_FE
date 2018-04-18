@@ -1,6 +1,6 @@
 // Dependencies
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 
 // Components
 import Header from './Global/Header';
@@ -27,12 +27,10 @@ constructor() {
     }
   }
 
-   static propTypes = {
-    children: PropTypes.object.isRequired
-  };
+
 
   render() {  
-    console.log(this.state.s_users)
+   // console.log(this.state.s_users)
     if (localStorage.getItem('jwtToken')) {
     store.dispatch({
          type: "ADD_TO_STORE",
@@ -42,11 +40,12 @@ constructor() {
          avatar: this.state.s_users.avatar,
          career_id: this.state.s_users.career_id
      })}
-    const { children } = this.props;
+   // const { children } = this.props;
+   //<Content body={children} />
     return (
       <div >
         <Header items={items}/>
-        <Content body={children} />
+        <Content />
         <Footer items={items}/>
       </div>
     );

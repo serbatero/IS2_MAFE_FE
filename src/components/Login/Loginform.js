@@ -202,17 +202,10 @@ signOut = (response) => {
             <div className="box-for overflow">                         
               <div className="col-md-12 col-xs-12 login-blocks">
                 <h2>Login with social networks: </h2> 
+<button type="submit"  onClick={this.googleResponse} className="btn btn-default"> google</button>
+                <button type="submit" onClick={this.facebookResponse} className="btn btn-default"> facebook</button>
+                <button type="submit" onClick={this.twitterResponse} className="btn btn-default"> twitter</button>
 
-                <div class="social pull-right"> 
-                                    <ul>
-                                       <li><a className="wow fadeInUp animated animated" type="submit" onclick="{this.googleResponse}" style={{visibility: 'visible', animationName: 'fadeInUp'}}><i className="fa fa-twitter" /></a></li>
-        <li><a className="wow fadeInUp animated animated"  type="submit" onclick="{this.facebookResponse}" data-wow-delay="0.2s" style={{visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp'}}><i className="fa fa-facebook" /></a></li>
-        <li><a className="wow fadeInUp animated animated"  type="submit" onclick="{this.twitterResponse}" data-wow-delay="0.3s" style={{visibility: 'visible', animationDelay: '0.3s', animationName: 'fadeInUp'}}><i className="fa fa-google-plus" /></a></li>
-                                    </ul> 
-                                </div>
-                <button type="submit"  className="btn btn-default"> google</button>
-                <button type="submit"  className="btn btn-default"> facebook</button>
-                <button type="submit" className="btn btn-default"> twitter</button>
 
                 <button type="submit" onClick={this.signOut} className="btn btn-default"> google log out</button>
                 
