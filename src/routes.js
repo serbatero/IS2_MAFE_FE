@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 import App from './components/App';
 import Inicio from './components/Inicio';
@@ -9,6 +9,7 @@ import Docentes from './components/Docentes';
 import Recursos from './components/Recursos';
 import Contacto from './components/Contacto';
 import Login from './components/Login';
+import Register from './components/Login/Registerform';
 import Page404 from './components/Page404';
 
 
@@ -21,6 +22,7 @@ const AppRoutes = () =>
       <Route exact path="/recursos" component={Recursos}/>
       <Route exact path="/contacto" component={Contacto}/>
       <Route exact path="/login" component={Login}/>
+      <Route exact path="/Register" component={Register}/>
       <Route component={Page404} />
     </Switch>
   </App>;

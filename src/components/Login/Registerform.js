@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { enviarDatos } from './enviarDatos';
-
+import Title from '../Global/Title';
 class Registerform extends Component {
 constructor() {
     super();
-    this.state = { email: null, password: null, name: "usuario", registrado: 0 };
+    this.state = { email: "", password: "", name: "u", registrado: 0, nameErr:"", emailErr:"", passErr:""};
+    //hay problema al dejar al dejar name vacio?
+    //hay problema si la contrasella es vacio en lugar de null?
+    this.validar = this.validar.bind(this);
+
   }
 
  setField (e) {
@@ -23,6 +27,29 @@ constructor() {
       name: e.target.value
     })
     }
+  }
+
+  validar(e){
+    //console.log(this.state);
+    if ((this.state.name.length <3 && this.state.name.length!==0)|| ((this.state.name === "u")&&(e.target.id ==='name'))){
+            this.setState({nameErr: 'No es nombre valido'});
+        }
+    if(this.state.name.length >=3){
+            this.setState({nameErr: ''});
+        }
+    if((this.state.email.indexOf('@') === -1 && this.state.email.length !==0) || ((this.state.email=== "")&&(e.target.id ==='email1'))){
+            this.setState({emailErr: 'No es una direccion de correo'});
+        }
+
+    if(this.state.email.indexOf('@') > -1){
+            this.setState({emailErr: ''});
+        }
+    if ((this.state.password.length <2 && this.state.password.length!==0)|| ((this.state.password === "")&&(e.target.id ==='password1'))){
+            this.setState({passErr: 'No es una contraseña valida'});
+          }
+    if(this.state.password.length >=2){
+            this.setState({passErr: ''});
+        }
   }
 
   handleSubmit = (e) =>{
@@ -44,6 +71,8 @@ constructor() {
     if(this.state.registrado === 1){
 
       return(<div>
+        <div className="register-area" style={{backgroundColor: 'rgb(249, 249, 249)'}}>
+        <div className="container">
         <div className="col-md-6">
        <div className="box-for overflow">
         <div className="col-md-12 col-xs-12 register-blocks">
@@ -56,26 +85,31 @@ constructor() {
           </div>
       </div>
     </div>
+      </div>
+      </div>
       </div>)
 
     }else
-     return(
+     return(<div>
+      <Title title='Register'/>
+       <div className="register-area" style={{backgroundColor: 'rgb(249, 249, 249)'}}>
+        <div className="container">
           <div className="col-md-6">
        <div className="box-for overflow">
         <div className="col-md-12 col-xs-12 register-blocks">
           <h2>Registrate : </h2> 
           <form >
             <div className="form-group">
-              <label htmlFor="name">Nombre</label>
-              <input type="text" onChange={(e)=>this.setField(e)} className="form-control" id="name" />
+              <label htmlFor="name">Nombre &nbsp; <font color = 'red'>{this.state.nameErr}</font></label>
+              <input type="text" onChange={(e)=>this.setField(e)} onBlur={(e)=>this.validar(e)} className="form-control" id="name" required/>
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="text" onChange={(e)=>this.setField(e)} className="form-control" id="email1" />
+              <label htmlFor="email">Email &nbsp; <font color = 'red'>{this.state.emailErr}</font></label>
+              <input type="text" onChange={(e)=>this.setField(e)} onBlur={(e)=>this.validar(e)} className="form-control" id="email1" />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Contraseña</label>
-              <input type="password" onChange={(e)=>this.setField(e)} className="form-control" id="password1" />
+              <label htmlFor="password">Contraseña &nbsp; <font color = 'red'>{this.state.passErr}</font></label>
+              <input type="password" onChange={(e)=>this.setField(e)} onBlur={(e)=>this.validar(e)} className="form-control" id="password1" />
             </div>
             <div className="text-center">
               <button type="submit" onClick={this.handleSubmit} className="btn btn-default">Registrarse</button>
@@ -83,6 +117,9 @@ constructor() {
           </form>
         </div>
       </div>
+    </div>
+    </div>
+    </div>
     </div>
       )
     }
