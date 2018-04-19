@@ -7,8 +7,8 @@ import Busqueda from '../Global/Busqueda.js';
 import Contenido from './Contenido.js';
 import baseURL from '../../url';
 
-class Recursos extends Component {
-constructor() {
+class Listado extends Component {
+  constructor() {
     super()
     this.state = { data_a: [] , count: 1}
      fetch(`${baseURL}/resources?page=${this.state.count}`)
@@ -42,7 +42,10 @@ constructor() {
       })
       .then((data) => {
         this.setState({ data_a: data })
+        console.log(this.state.count);
       })
+
+      console.log(this.state.count);
   }
 
 	render(){
@@ -67,4 +70,4 @@ constructor() {
 	}
 }
 
-export default Recursos;
+export default Listado;

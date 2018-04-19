@@ -1,11 +1,11 @@
 // Dependencias
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 //Assets
 import Like from '../Global/images/like.png';
 import Dislike from '../Global/images/dislike.png';
 import Image from '../Global/images/book.png';
-import { Link } from 'react-router-dom'
 
 class Materia extends Component {
 	render(){
@@ -33,7 +33,6 @@ class Materia extends Component {
 			</div>
 		);
 	}
-
 }
 
 export default Materia;

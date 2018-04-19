@@ -1,11 +1,12 @@
 // Dependencias
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 //Assets
 import Like from '../Global/images/like.png';
 import Dislike from '../Global/images/dislike.png';
 import Image from '../Global/images/perfil.png';
-import { Link } from 'react-router-dom'
+
 class Docente extends Component {
 	render(){
 		return(
@@ -24,7 +25,7 @@ class Docente extends Component {
 				
 						<div className="property-icon">
 							<img src={Like} alt=""/>(2)
-							<img src={Dislike} alt=""/>(1)  
+							<img src={Dislike} alt=""/>(1)
 						</div>
 					</div>
 				</div>

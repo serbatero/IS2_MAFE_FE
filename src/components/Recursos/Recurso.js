@@ -15,7 +15,7 @@ class Recurso extends Component {
 					<div className="item-thumb" >
 					<Link to={`/recursos/${this.props.id}`}>
 						<img src={Image}  alt=""/>
-						</Link>
+					</Link>
 					</div>
 					<div className="item-entry overflow">
 						<h5 className="limit1" ><a>{this.props.name}</a></h5>

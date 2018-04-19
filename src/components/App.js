@@ -45,7 +45,7 @@ constructor() {
     return (
       <div >
         <Header items={items}/>
-        <Content />
+        <Content/>
         <Footer items={items}/>
       </div>
     );

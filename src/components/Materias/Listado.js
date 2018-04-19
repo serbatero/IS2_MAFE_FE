@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 
 //Componentes
 import Title from '../Global/Title';
-import Busqueda from '../Global//Busqueda.js';
+import Busqueda from '../Global/Busqueda.js';
 import Contenido from './Contenido.js';
-import baseURL from '../../url'
+import baseURL from '../../url';
 
-class Materias extends Component {
+class Listado extends Component {
 	constructor() {
     super()
     this.state = { data_a: [] , count: 1}
@@ -65,10 +65,9 @@ class Materias extends Component {
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		);
 	}
 }
 
-export default Materias;
+export default Listado;
