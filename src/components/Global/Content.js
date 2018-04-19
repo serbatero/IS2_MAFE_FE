@@ -5,6 +5,7 @@ import Inicio from '../Inicio';
 import Materias from '../Materias';
 import Docentes from '../Docentes';
 import Recursos from '../Recursos';
+import CrearRecurso from '../Recursos/CrearRecurso';
 import Contacto from '../Contacto';
 import Login from '../Login';
 import Register from '../Login/Registerform';
@@ -17,6 +18,7 @@ const Content = () => (
       <Route  path="/materias" component={Materias}/>
       <Route  path="/docentes" component={Docentes}/>
       <Route  path="/recursos" component={Recursos}/>
+      <Route  path="/crearrecurso" component={CrearRecurso}/>
       <Route exact path="/contacto" component={Contacto}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/Register" component={Register}/>

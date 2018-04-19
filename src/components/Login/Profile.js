@@ -1,21 +1,79 @@
 import React, { Component } from 'react';
 import store from '../../store';
-
+import FileBase64 from 'react-file-base64';
+import axios from 'axios'
+import baseURL from '../../url'
 class Profile extends Component {
   constructor() {
     super();
+    this.state = {   nombre : '',
+    nombreErr :'',
+            correo : '',
+            correoErr : ''
+            
+          }
     this.handleFinish.bind(this);
-
+    this.handleInput =this.handleInput.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
   }
 
 handleFinish(e){
      localStorage.removeItem('jwtToken')
-     localStorage.removeItem('googleToken')
      window.location.reload()
   }
 
-  handleSubmitImage=(e)=>{
- console.log(e.target.files[0])
+handleInput(e){
+        this.setState({
+            [e.target.name]:e.target.value
+        });
+    };
+
+onSubmit(e){
+
+ let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json;',
+          'Authorization': 'Bearer '+ localStorage.getItem('jwtToken')
+      }
+    };
+   axios.patch(`${baseURL}/users/${store.getState().id}`, {
+    username: this.state.nombre,
+    email:this.state.email
+  }, axiosConfig)
+  .then(function (response) {
+    window.location.reload()
+    //console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+        this.setState( {
+            nombre : '',
+            correo : ''
+        });
+
+    };
+
+  getFiles(files){
+   // console.log(files)
+    let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json;',
+          'Authorization': 'Bearer '+ localStorage.getItem('jwtToken')
+      }
+    };
+   axios.patch(`${baseURL}/users/${store.getState().id}`, {
+    base64: files.base64
+  }, axiosConfig)
+  .then(function (response) {
+    window.location.reload()
+    //console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+    
+     
   }
 
   render() {
@@ -36,31 +94,48 @@ handleFinish(e){
           <div className="row">
             <div className="col-sm-10 col-sm-offset-1 profiel-container">
                 <div className="profiel-header">
-                  <h3>
+
+
+
+
+<div className="row p-b-15  ">
+        <h3>
                     <b>BIENVENIDO A</b> TU PERFIL <br />
                   </h3>
-                  <hr />
-                </div>
-                <div className="clear">
-                  <div className="col-sm-3 col-sm-offset-1">
-                    <div className="picture-container">
-                      <div className="picture">
+        <div className="col-sm-4 col-sm-offset-1">
+          <div className="picture-container">
+            <div className="picture">
                         <img src={`${store.getState().avatar}`} alt ="" className="picture-src" id="wizardPicturePreview"/>
-                        <input type="file" id="wizard-picture" onClick={this.handleSubmitImage} />
                       </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-3 padding-profile">
-                    <div className="form-group">
-                      <h4 className="s-property-title">Nombre de usuario:</h4>
+          </div>
+        </div>
+        <div className="col-sm-6">
+          <div className="form-group">
+           <h4 className="s-property-title">Nombre de usuario:</h4>
                       <label>{store.getState().username}</label>
-                    </div>
-                    <div className="form-group">
-                       <h4 className="s-property-title">Correo electronico:</h4>
+            <input name="nombre" type="text" value={this.state.nombre}  onChange = {this.handleInput} className="form-control" placeholder="Tu nombre de usuario..." />
+          </div>
+          <div className="form-group">
+            <h4 className="s-property-title">Correo electronico:</h4>
                         <label>{store.getState().email}</label>
-                    </div> 
-                   <button type="submit" onClick={this.handleFinish} className="btn btn-default">Cerrar sesión</button>
-                  </div>  
+            <input name="correo" type="text" value={this.state.correo} onChange = {this.handleInput} className="form-control" placeholder="Tu nuevo correo..." />
+          </div> 
+          <div className="form-group">
+            <div className="form-group">
+   
+            <h4 className="s-property-title">Personaliza tu imagen:</h4>
+            <FileBase64 className="form-control"
+                    multiple={ false }
+                     onDone={ this.getFiles.bind(this) } />
+           
+             </div>
+             <button type="submit" onClick={this.onSubmit} className="btn btn-default">Actualizar tus Datos</button>
+             <button type="submit" onClick={this.handleFinish} className="btn btn-default">Cerrar sesión</button>
+
+          </div>
+        </div>
+      </div>
+                  <hr />
                 </div>
                 <br />
             </div>

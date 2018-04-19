@@ -5,8 +5,7 @@ class Busqueda extends Component {
 	render(){
 		
 		return(
-			<div className="col-md-3 p0 padding-top-40">
-				<div className="blog-asside-right pr0">
+			
 					<div className="panel panel-default sidebar-menu wow fadeInRight animated" >
 						<div className="panel-heading">
 							<h3 className="panel-title">Busqueda</h3>
@@ -53,8 +52,6 @@ class Busqueda extends Component {
 					</div>
 
 			
-				</div>
-			</div>
 		);
 	}
 }

@@ -6,7 +6,7 @@ import Title from '../Global/Title';
 import Busqueda from '../Global/Busqueda.js';
 import Contenido from './Contenido.js';
 import baseURL from '../../url';
-
+import { Link } from "react-router-dom";
 class Listado extends Component {
   constructor() {
     super()
@@ -52,7 +52,12 @@ class Listado extends Component {
 		return(
 			<div>
 				<Title title='Recursos'/>
-				<Busqueda />
+        <div className="col-md-3 p0 padding-top-40">
+          <div className="blog-asside-right pr0">
+				    <Busqueda />
+            <Link to='/crearrecurso'><button type="submit" className="btn btn-default">Crear recurso</button></Link> 
+          </div>
+        </div>
 				<Contenido listado={this.state.data_a}/>
         <div className="col-md-12"> 
           <div className="pull-right">

@@ -30,7 +30,7 @@ constructor() {
 
 
   render() {  
-    //console.log(this.state.s_users.avatar)
+    console.log(this.state.s_users)
     if (localStorage.getItem('jwtToken')) {
     store.dispatch({
          type: "ADD_TO_STORE",

@@ -52,7 +52,11 @@ class Listado extends Component {
 		return(
 			<div>
 				<Title title="Materias"/>
+        <div className="col-md-3 p0 padding-top-40">
+        <div className="blog-asside-right pr0">
 				<Busqueda />
+        </div>
+        </div>
 				<Contenido listado={this.state.data_a}/>
 				<div className="col-md-12"> 
 					<div className="pull-right">
