@@ -55,7 +55,7 @@ onSubmit(e){
     };
 
   getFiles(files){
-   // console.log(files)
+   console.log(files)
     let axiosConfig = {
       headers: {
           'Content-Type': 'application/json;',
@@ -66,7 +66,7 @@ onSubmit(e){
     base64: files.base64
   }, axiosConfig)
   .then(function (response) {
-    window.location.reload()
+    //window.location.reload()
     //console.log(response);
   })
   .catch(function (error) {

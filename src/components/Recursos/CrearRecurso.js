@@ -9,6 +9,7 @@ class Contenido extends Component {
  constructor(props){
         super(props);
         this.state = {
+            id: '',
             nombre : '',
             nombreErr :'',
             datos: null,
@@ -38,12 +39,15 @@ class Contenido extends Component {
     }
 
     onSubmit(e){
-        console.log(this.state);
+
+
+
+//        console.log(this.state);
         e.preventDefault();
         if((this.state.nombreErr !=="")  ){
            swal("Digite los campos señalados",'','error'); 
         }else{
-            swal("Su mensaje ha sido enviado",'','success');
+            swal("Su recurso ha sido creado",'','success');
         }
         this.setState( {
             nombre : '',
@@ -57,23 +61,28 @@ class Contenido extends Component {
        	   'Content-Type': 'application/json;'
       						}
    						};
-  		 axios.patch(`${baseURL}/resources/1`, {
-   			 resource: this.state.datos.base64,
+              axios.post(`${baseURL}/tests`, {
+        resource: this.state.datos.base64,
          name: this.state.nombre,
          description: this.state.mensaje
- 			 }, axiosConfig)
- 			 .then(function (response) {
-  		  
-   			 //console.log(response);
-  			})
-  			.catch(function (error) {
-			  console.log(error);
- 			 });
+       }, axiosConfig)
+       .then(function (response) {
+       //  this.setState({response.data.id});
+         
+        })
+        .catch(function (error) {
+        console.log(error);
+       });
+
+
+
+  		
    		 };
 
 
     getFiles(files){
    this.setState({datos: files})
+ //  console.log(this.state.datos);
   }
 
 
