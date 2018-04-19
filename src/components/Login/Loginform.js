@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import { loginUser } from './loginUser';
 import { obtenerDatos, pPost,pGet } from './obtenerDatos';
 import firebase from 'firebase'
-
+import swal from 'sweetalert2'
 
 class Loginform extends Component {
 constructor() {
@@ -39,18 +39,26 @@ constructor() {
   }
 
 
-  handleSubmit = (e) =>{
-       e.preventDefault()
+handleSubmit = (e) =>{
+     e.preventDefault()
       const loginParams = {"auth": {"email": this.state.email, "password": this.state.password}}
-      loginUser(loginParams,'user_token').then((token) => {
+      loginUser(loginParams).then((token) => {
       localStorage.setItem("jwtToken", token.jwt)
     }).then(  this.setState({error: null}) ).catch((error) => {
       this.setState({error: "Email o contraseña incorrecta"})
     });
     if(this.state.error === null){
     setTimeout(function(){document.location.reload()},1000);
+    swal({
+      title:'Cargando...',
+      text:'',
+      timer:1000,
+      onOpen: () =>{
+        swal.showLoading()
+      }
+    })
     }
-
+    
   }
 
 
@@ -65,6 +73,14 @@ constructor() {
       //console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
+      swal({
+      title:'Cargando...',
+      text:'',
+      timer:1000,
+      onOpen: () =>{
+        swal.showLoading()
+      }
+    })
     })
     }).then(  this.setState({error: null}) ).catch((error) => {
    //   this.setState({error: "Email o contraseña incorrecta"})
@@ -101,6 +117,14 @@ constructor() {
      // console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
+      swal({
+      title:'Cargando...',
+      text:'',
+      timer:1000,
+      onOpen: () =>{
+        swal.showLoading()
+      }
+    })
     })
     }).then(  this.setState({error: null}) ).catch((error) => {
    //   this.setState({error: "Email o contraseña incorrecta"})
@@ -134,6 +158,14 @@ constructor() {
       //console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
+      swal({
+      title:'Cargando...',
+      text:'',
+      timer:1000,
+      onOpen: () =>{
+        swal.showLoading()
+      }
+    })
     })
     }).then(  this.setState({error: null}) ).catch((error) => {
    //   this.setState({error: "Email o contraseña incorrecta"})
