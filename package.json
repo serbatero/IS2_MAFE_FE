@@ -11,6 +11,7 @@
     "react-facebook-login": "^4.0.1",
     "react-file-base64": "^1.0.3",
     "react-google-login": "^3.2.1",
+    "react-pdf": "^3.0.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "^1.1.1",
     "react-twitter-auth": "^0.0.11",

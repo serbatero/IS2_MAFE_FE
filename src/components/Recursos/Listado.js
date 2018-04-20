@@ -56,6 +56,7 @@ class Listado extends Component {
           <div className="blog-asside-right pr0">
 				    <Busqueda />
             <Link to='/crearrecurso'><button type="submit" className="btn btn-default">Crear recurso</button></Link> 
+            <a href='http://localhost:3000/resourcespdfs.pdf'><button type="submit" className="btn btn-default">Ver recursos en pdf</button></a> 
           </div>
         </div>
 				<Contenido listado={this.state.data_a}/>

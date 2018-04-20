@@ -27,7 +27,7 @@ constructor() {
     } else {
     return (
        	<div>
-      	<Title title='Login'/>
+      	<Title title='Iniciar sesión'/>
         <div className="register-area" style={{backgroundColor: 'rgb(249, 249, 249)'}}>
         <div className="container">
           <Loginform />

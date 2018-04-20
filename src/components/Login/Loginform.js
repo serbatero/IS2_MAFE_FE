@@ -67,7 +67,9 @@ handleSubmit = (e) =>{
      const loginParams = {"name": result.additionalUserInfo.profile.name,"email": result.additionalUserInfo.profile.email,
      "avatar": result.additionalUserInfo.profile.picture }
      pPost(loginParams,"socials").then((user) => {
-     pGet(`socials/${user[0].id}`).then((token) => {
+      console.log(user)
+        if(user.id){
+     pGet(`socials/${user.id}`).then((token) => {
       //console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
@@ -79,7 +81,7 @@ handleSubmit = (e) =>{
         swal.showLoading()
       }
     })
-    })
+    })}
     }).then(  this.setState({error: null}) ).catch((error) => {
    //   this.setState({error: "Email o contraseña incorrecta"})
     });
@@ -111,7 +113,8 @@ handleSubmit = (e) =>{
   const loginParams = {"name": result.additionalUserInfo.profile.name,"email": `${result.additionalUserInfo.profile.screen_name}@correo.com`,
      "avatar": result.additionalUserInfo.profile.profile_image_url }
      pPost(loginParams,"socials").then((user) => {
-     pGet(`socials/${user[0].id}`).then((token) => {
+    
+     pGet(`socials/${user.id}`).then((token) => {
      // console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
@@ -120,10 +123,9 @@ handleSubmit = (e) =>{
       text:'',
       timer:1000,
       onOpen: () =>{
-        swal.showLoading()
-      }
-    })
-    })
+        swal.showLoading()}  })   })
+   
+
     }).then(  this.setState({error: null}) ).catch((error) => {
    //   this.setState({error: "Email o contraseña incorrecta"})
     });
@@ -152,7 +154,7 @@ handleSubmit = (e) =>{
  const loginParams = {"name": result.additionalUserInfo.profile.name,"email": result.additionalUserInfo.profile.email,
      "avatar": result.additionalUserInfo.profile.picture.data.url }
      pPost(loginParams,"socials").then((user) => {
-     pGet(`socials/${user[0].id}`).then((token) => {
+     pGet(`socials/${user.id}`).then((token) => {
       //console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
@@ -206,7 +208,7 @@ signOut = (response) => {
           <div className="col-md-6">
             <div className="box-for overflow">                         
               <div className="col-md-12 col-xs-12 login-blocks">
-                <h2>Login : </h2> 
+                <h2>Iniciar sesión : </h2> 
                 <form>
                   <div className="form-group">
                     <label htmlFor="email">Email</label>
@@ -231,14 +233,16 @@ signOut = (response) => {
           <div className="col-md-6">
             <div className="box-for overflow">                         
               <div className="col-md-12 col-xs-12 login-blocks">
-                <h2>Login with social networks: </h2> 
-<button type="submit"  onClick={this.googleResponse} className="btn btn-default"> google</button>
-                <button type="submit" onClick={this.facebookResponse} className="btn btn-default"> facebook</button>
-                <button type="submit" onClick={this.twitterResponse} className="btn btn-default"> twitter</button>
-
-
-                <button type="submit" onClick={this.signOut} className="btn btn-default"> google log out</button>
-                
+                <h2>Iniciar sesión con redes sociales: </h2> 
+                <br></br>
+                <div className="social pull-left"> 
+        <ul>
+          <li><a className="wow fadeInUp animated animated" onClick={this.twitterResponse} style={{visibility: 'visible', animationName: 'fadeInUp'}}><i className="fa fa-twitter" /></a></li>
+          <li><a className="wow fadeInUp animated animated" onClick={this.facebookResponse} data-wow-delay="0.2s" style={{visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp'}}><i className="fa fa-facebook" /></a></li>
+          <li><a className="wow fadeInUp animated animated" onClick={this.googleResponse} data-wow-delay="0.3s" style={{visibility: 'visible', animationDelay: '0.3s', animationName: 'fadeInUp'}}><i className="fa fa-google-plus" /></a></li>
+          
+        </ul> 
+      </div>
                 
               </div>
                 

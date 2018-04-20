@@ -53,7 +53,9 @@ constructor() {
         <div className="col-md-3 p0 padding-top-40">
           <div className="blog-asside-right pr0">
 				    <Busqueda />
+          <a href='http://localhost:3000/teacherspdfs.pdf'><button type="submit" className="btn btn-default">Ver profesores en pdf</button></a> 
           </div>
+
         </div>
 				<Contenido listado={this.state.data_a}/>
 				<div className="col-md-12"> 

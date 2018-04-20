@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 //Componentes
 import Title from '../Global/Title';
 import Comentarios from '../Global/Comentarios.js';
-import swal from 'sweetalert2'
 import FileBase64 from 'react-file-base64';
-import axios from 'axios'
+import axios from 'axios';
+
 //Assets
 import baseURL from '../../url';
-
+import { Document,Page } from 'react-pdf';
 class Individual extends Component {
 constructor() {
 		super()
@@ -19,7 +19,9 @@ constructor() {
             datos: null,
             mensaje : '',
             mensajeErr: '',
-            data_a: [] 
+            data_a: [],
+            numPages: null,
+    		pageNumber: 1
              }
               this.handleInput =this.handleInput.bind(this);
 this.validar = this.validar.bind(this);		 
@@ -52,6 +54,9 @@ this.validar = this.validar.bind(this);
             this.setState({nombreErr: ''});
         }
     }
+    onDocumentLoad = ({ numPages }) => {
+    this.setState({ numPages });
+  }
 
 	ModificarRecurso=(e)=>{
 
@@ -76,8 +81,26 @@ this.validar = this.validar.bind(this);
  			 });
 
 	}
-
+	paginacion=(e)=>{
+		
+		if(e.target.id==="prev" && this.state.pageNumber >= 1 && this.state.pageNumber <=this.state.numPages ){
+			this.setState({})
+			this.setState({pageNumber: this.state.pageNumber - 1});
+		}
+		if(e.target.id==="next" && this.state.pageNumber >= 1 && this.state.pageNumber <=this.state.numPages )
+			
+		{
+		this.setState({pageNumber: this.state.pageNumber + 1});
+		}
+		if(this.state.pageNumber===0){
+			this.setState({pageNumber: 1})
+		}
+		if(this.state.pageNumber===this.state.numPages+1){
+			this.setState({pageNumber: this.state.numPages})
+		}
+	}
 	render() {
+		 const { pageNumber, numPages } = this.state;
 		return (
 			<div >
 			<Title title={this.state.data_a.name}/>
@@ -88,13 +111,18 @@ this.validar = this.validar.bind(this);
 								<div className="single-property-wrapper">
 									
 									<div className="single-property-header">
-										<h3><b>Link: {this.state.data_a.link}</b></h3>
+										 <a href={this.state.data_a.link}><h3><b>Visualizar:</b></h3></a>
 										<div className="section">
 											<section id="comments" className="comments wow fadeInRight animated"> 
 												<h6 className="text wow fadeInLeft animated"><a>Description</a></h6>
 												<div className="s-property-content">
 													<p>{this.state.data_a.description}</p>
-												
+												 <Document file={this.state.data_a.link} onLoadSuccess={this.onDocumentLoad}>
+         											 <Page pageNumber={pageNumber} />
+      														  </Document>
+      											  <p>Page {pageNumber} of {numPages}</p>
+      											  <button type="submit"id="prev" className="btn btn-primary" onClick ={this.paginacion}> Prev</button>
+      											  <button type="submit"id="next" className="btn btn-primary" onClick ={this.paginacion}> Next</button>
 												</div>
 												<Comentarios/>
 											</section>
@@ -126,13 +154,7 @@ this.validar = this.validar.bind(this);
 														<button type="submit" className="btn btn-primary" onClick ={this.ModificarRecurso}>Modificar recurso</button>
                    				
 													</div>
-													<div className="clear">
-														<ul className="dealer-contacts">
-															<li><i className="pe-7s-map-marker strong"> </i> 9089 your address </li>
-															<li><i className="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-															<li><i className="pe-7s-call strong"> </i> +1 908 967 5906</li>
-														</ul>
-													</div>
+													
 												</div>
 											</div>
 										</div>
