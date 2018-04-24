@@ -4,7 +4,8 @@ import Title from '../Global/Title';
 import baseURL from '../../url'
 import swal from 'sweetalert2'
 import FileBase64 from 'react-file-base64';
-import axios from 'axios'
+import axios from 'axios';
+import store from '../../store';
 class Contenido extends Component {
  constructor(props){
         super(props);
@@ -64,7 +65,8 @@ class Contenido extends Component {
               axios.post(`${baseURL}/tests`, {
         resource: this.state.datos.base64,
          name: this.state.nombre,
-         description: this.state.mensaje
+         description: this.state.mensaje,
+         user_id: store.getState().id
        }, axiosConfig)
        .then(function (response) {
        //  this.setState({response.data.id});

@@ -6,7 +6,7 @@
 //https://console.firebase.google.com/project/mafe-app/overview
 import React, { Component } from 'react';
 import { loginUser } from './loginUser';
-import { obtenerDatos, pPost,pGet } from './obtenerDatos';
+import { obtenerDatos, pPost } from './obtenerDatos';
 import firebase from 'firebase'
 import swal from 'sweetalert2'
 
@@ -26,7 +26,7 @@ constructor() {
   }
   
  setField (e) {
- 	if(e.target.id === 'email'){
+  if(e.target.id === 'email'){
     this.setState({
       email: e.target.value
     })
@@ -66,11 +66,10 @@ handleSubmit = (e) =>{
     firebase.auth().signInWithPopup(provider).then(function(result) {
      const loginParams = {"name": result.additionalUserInfo.profile.name,"email": result.additionalUserInfo.profile.email,
      "avatar": result.additionalUserInfo.profile.picture }
-     pPost(loginParams,"socials").then((user) => {
-      console.log(user)
-        if(user.id){
-     pGet(`socials/${user.id}`).then((token) => {
-      //console.log(token.jwt);
+      pPost(loginParams,"socials").then((token) => {
+    console.log(token);
+    
+     // console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
       swal({
@@ -78,28 +77,23 @@ handleSubmit = (e) =>{
       text:'',
       timer:1000,
       onOpen: () =>{
-        swal.showLoading()
-      }
-    })
-    })}
-    }).then(  this.setState({error: null}) ).catch((error) => {
-   //   this.setState({error: "Email o contraseña incorrecta"})
-    });
-    if(this.state.error === null){
+        swal.showLoading()}  })   })
    
+
+   
+    if(this.state.error === null){
+   // setTimeout(function(){document.location.reload()},1000);
     }
   // This gives you a Google Access Token. You can use it to access the Google API.
   //var token = result.credential.accessToken;
   // The signed-in user info.
   //var user = result.user;
-  console.log(result.additionalUserInfo.profile)
-  // ...
-  }).catch(function(error) {
+}).catch(function(error) {
   // Handle Errors here.
   //var errorCode = error.code;
   //var errorMessage = error.message;
   // The email of the user's account used.
-  //var email = error.email;
+ // var email = error.email;
   // The firebase.auth.AuthCredential type that was used.
   //var credential = error.credential;
   // ...
@@ -112,9 +106,10 @@ handleSubmit = (e) =>{
  firebase.auth().signInWithPopup(provider).then(function(result) {
   const loginParams = {"name": result.additionalUserInfo.profile.name,"email": `${result.additionalUserInfo.profile.screen_name}@correo.com`,
      "avatar": result.additionalUserInfo.profile.profile_image_url }
-     pPost(loginParams,"socials").then((user) => {
+     
+     pPost(loginParams,"socials").then((token) => {
+    console.log(token);
     
-     pGet(`socials/${user.id}`).then((token) => {
      // console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
@@ -126,9 +121,7 @@ handleSubmit = (e) =>{
         swal.showLoading()}  })   })
    
 
-    }).then(  this.setState({error: null}) ).catch((error) => {
-   //   this.setState({error: "Email o contraseña incorrecta"})
-    });
+   
     if(this.state.error === null){
    // setTimeout(function(){document.location.reload()},1000);
     }
@@ -153,9 +146,10 @@ handleSubmit = (e) =>{
   firebase.auth().signInWithPopup(provider).then(function(result) {
  const loginParams = {"name": result.additionalUserInfo.profile.name,"email": result.additionalUserInfo.profile.email,
      "avatar": result.additionalUserInfo.profile.picture.data.url }
-     pPost(loginParams,"socials").then((user) => {
-     pGet(`socials/${user.id}`).then((token) => {
-      //console.log(token.jwt);
+      pPost(loginParams,"socials").then((token) => {
+    console.log(token);
+    
+     // console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
       swal({
@@ -163,13 +157,10 @@ handleSubmit = (e) =>{
       text:'',
       timer:1000,
       onOpen: () =>{
-        swal.showLoading()
-      }
-    })
-    })
-    }).then(  this.setState({error: null}) ).catch((error) => {
-   //   this.setState({error: "Email o contraseña incorrecta"})
-    });
+        swal.showLoading()}  })   })
+   
+
+   
     if(this.state.error === null){
    // setTimeout(function(){document.location.reload()},1000);
     }
@@ -177,15 +168,12 @@ handleSubmit = (e) =>{
   //var token = result.credential.accessToken;
   // The signed-in user info.
   //var user = result.user;
-  console.log(result.additionalUserInfo.profile)
-  // ...
-  
 }).catch(function(error) {
   // Handle Errors here.
   //var errorCode = error.code;
   //var errorMessage = error.message;
   // The email of the user's account used.
-  //var email = error.email;
+ // var email = error.email;
   // The firebase.auth.AuthCredential type that was used.
   //var credential = error.credential;
   // ...

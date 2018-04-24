@@ -100,7 +100,10 @@ this.validar = this.validar.bind(this);
 		}
 	}
 	render() {
+
+		if(localStorage.getItem('jwtToken')){
 		 const { pageNumber, numPages } = this.state;
+		
 		return (
 			<div >
 			<Title title={this.state.data_a.name}/>
@@ -168,7 +171,50 @@ this.validar = this.validar.bind(this);
 				</div>
 
 			</div>
-		);
+		);}else{
+ const { pageNumber, numPages } = this.state;
+			return(<div>
+			<div >
+			<Title title={this.state.data_a.name}/>
+			<div className="content-area single-property" style={{backgroundColor: '#FCFCFC'}}>
+					<div className="container">
+						<div className="clearfix padding-top-40">
+							<div className="col-md-8 single-property-content ">
+								<div className="single-property-wrapper">
+									
+									<div className="single-property-header">
+										 <a href={this.state.data_a.link}><h3><b>Visualizar:</b></h3></a>
+										<div className="section">
+											<section id="comments" className="comments wow fadeInRight animated"> 
+												<h6 className="text wow fadeInLeft animated"><a>Description</a></h6>
+												<div className="s-property-content">
+													<p>{this.state.data_a.description}</p>
+												 <Document file={this.state.data_a.link} onLoadSuccess={this.onDocumentLoad}>
+         											 <Page pageNumber={pageNumber} />
+      														  </Document>
+      											  <p>Page {pageNumber} of {numPages}</p>
+      											  <button type="submit"id="prev" className="btn btn-primary" onClick ={this.paginacion}> Prev</button>
+      											  <button type="submit"id="next" className="btn btn-primary" onClick ={this.paginacion}> Next</button>
+												</div>
+												<Comentarios/>
+											</section>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						</div>
+						<Link to='/recursos'>Volver</Link>
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+
+		</div>)}
 	}
 }
 

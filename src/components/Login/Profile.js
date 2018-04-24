@@ -3,6 +3,7 @@ import store from '../../store';
 import FileBase64 from 'react-file-base64';
 import axios from 'axios'
 import baseURL from '../../url'
+import swal from 'sweetalert2'
 class Profile extends Component {
   constructor() {
     super();
@@ -66,7 +67,15 @@ onSubmit(e){
     base64: files.base64
   }, axiosConfig)
   .then(function (response) {
-    //window.location.reload()
+    swal({
+      title:'Cargando...',
+      text:'',
+      timer:1000,
+      onOpen: () =>{
+        swal.showLoading()
+      }
+    })
+    window.location.reload()
     //console.log(response);
   })
   .catch(function (error) {
