@@ -228,7 +228,8 @@ signOut = (response) => {
           <li><a className="wow fadeInUp animated animated" onClick={this.twitterResponse} style={{visibility: 'visible', animationName: 'fadeInUp'}}><i className="fa fa-twitter" /></a></li>
           <li><a className="wow fadeInUp animated animated" onClick={this.facebookResponse} data-wow-delay="0.2s" style={{visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp'}}><i className="fa fa-facebook" /></a></li>
           <li><a className="wow fadeInUp animated animated" onClick={this.googleResponse} data-wow-delay="0.3s" style={{visibility: 'visible', animationDelay: '0.3s', animationName: 'fadeInUp'}}><i className="fa fa-google-plus" /></a></li>
-          
+          <button type="submit" onClick={this.signOut} className="btn btn-default"> Log out</button>
+                   
         </ul> 
       </div>
                 
