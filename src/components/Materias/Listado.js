@@ -42,10 +42,10 @@ class Listado extends Component {
       })
       .then((data) => {
         this.setState({ data_a: data })
-        console.log(this.state.count);
+      //  console.log(this.state.count);
       })
      
-      console.log(this.state.count);
+   //   console.log(this.state.count);
   }
 
 	render(){

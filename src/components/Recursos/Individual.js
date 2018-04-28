@@ -6,7 +6,7 @@ import Title from '../Global/Title';
 import Comentarios from '../Global/Comentarios.js';
 import FileBase64 from 'react-file-base64';
 import axios from 'axios';
-
+import store from '../../store';
 //Assets
 import baseURL from '../../url';
 import { Document,Page } from 'react-pdf';
@@ -37,7 +37,7 @@ this.validar = this.validar.bind(this);
 	}
 	getFiles(files){
    this.setState({datos: files})
- //  console.log(this.state.datos);
+   console.log(this.state.datos);
   }
   handleInput(e){
         this.setState({
@@ -70,7 +70,8 @@ this.validar = this.validar.bind(this);
 		axios.patch(`${baseURL}/tests/${this.state.data_a.id}`, {
    			 resource: this.state.datos.base64,
          	 name: this.state.nombre,
-             description: this.state.mensaje
+             description: this.state.mensaje,
+             user_id:  store.getState().id
  			 }, axiosConfig)
  			 .then(function (response) {
   		  window.location.replace("http://localhost:3001/recursos/");

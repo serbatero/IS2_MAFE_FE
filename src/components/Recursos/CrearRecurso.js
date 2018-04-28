@@ -41,8 +41,6 @@ class Contenido extends Component {
 
     onSubmit(e){
 
-
-
 //        console.log(this.state);
         e.preventDefault();
         if((this.state.nombreErr !=="")  ){
@@ -58,10 +56,10 @@ class Contenido extends Component {
 
         });  
            let axiosConfig = {
-     		 headers: {
-       	   'Content-Type': 'application/json;'
-      						}
-   						};
+         headers: {
+           'Content-Type': 'application/json;'
+                  }
+              };
               axios.post(`${baseURL}/tests`, {
         resource: this.state.datos.base64,
          name: this.state.nombre,
@@ -78,8 +76,8 @@ class Contenido extends Component {
 
 
 
-  		
-   		 };
+      
+       };
 
 
     getFiles(files){
@@ -89,11 +87,11 @@ class Contenido extends Component {
 
 
 
-	render(){
-		return(<div>
-			<Title title='Crear recurso'/>
-			<div className="col-md-9  pr0 padding-top-40 properties-page">
-			<div className="col-md-8 col-md-offset-2"> 
+  render(){
+    return(<div>
+      <Title title='Crear recurso'/>
+      <div className="col-md-9  pr0 padding-top-40 properties-page">
+      <div className="col-md-8 col-md-offset-2"> 
         <h2>Formato de recurso</h2>
             <form>
                 <div className="row">
@@ -125,10 +123,10 @@ class Contenido extends Component {
             </form>
 
         </div>
-			</div>
-			</div>
-		);
-	}
+      </div>
+      </div>
+    );
+  }
 }
 
 export default Contenido;

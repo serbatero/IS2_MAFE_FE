@@ -10,7 +10,7 @@ class Contenido extends Component {
 					<div id="list-type" className="proerty-th">
 						{this.props.listado.map((recurso)=>{
 								return (
-								<Recurso key={recurso.id} id={recurso.id} name={recurso.name} scoreresource_id={recurso.scoreresource_id} link={recurso.description} />
+								<Recurso key={recurso.id} id={recurso.id} name={recurso.name} scoreresource_id={recurso.scoreresource_id} link={recurso.description} likes={recurso.likes} dislikes={recurso.dislikes} />
 								)
 							})
 						}

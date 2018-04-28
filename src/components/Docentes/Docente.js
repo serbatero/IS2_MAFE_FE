@@ -24,8 +24,8 @@ class Docente extends Component {
 						<span className="proerty-price pull-left limit"> <b> Descripcion :</b> {this.props.description}</span>
 				
 						<div className="property-icon">
-							<img src={Like} alt=""/>(2)
-							<img src={Dislike} alt=""/>(1)
+							<img src={Like} alt=""/>({this.props.likes})
+							<img src={Dislike} alt=""/>({this.props.dislikes})
 						</div>
 					</div>
 				</div>
