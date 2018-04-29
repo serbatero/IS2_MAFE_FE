@@ -8,6 +8,7 @@ import FileBase64 from 'react-file-base64';
 import axios from 'axios';
 import store from '../../store';
 import { Doughnut } from 'react-chartjs-2';
+import Grafico from '../Global/Grafico';
 //Assets
 import baseURL from '../../url';
 import { Document,Page } from 'react-pdf';
@@ -80,8 +81,9 @@ constructor() {
              user_id:  store.getState().id
  			 }, axiosConfig)
  			 .then(function (response) {
-  		  window.location.replace("http://localhost:3001/recursos/");
+  		 
    			 //console.log(response);
+   			 setTimeout(function(){document.location.reload()},1000);
   			})
   			.catch(function (error) {
 			  console.log(error);
@@ -139,7 +141,8 @@ constructor() {
 								<div className="single-property-wrapper">
 									
 									<div className="single-property-header">
-										 <a href={this.state.data_a.link}><h3><b>Visualizar:</b></h3></a>
+									<Grafico data={this.state.data_a} type="resource_id"/>
+										 <a href={this.state.data_a.link}><h3><b>Visualizar documento:</b></h3></a>
 
 										<div className="section">
 											<section id="comments" className="comments wow fadeInRight animated"> 
@@ -153,7 +156,7 @@ constructor() {
       											  <button type="submit"id="prev" className="btn btn-primary" onClick ={this.paginacion}> Prev</button>
       											  <button type="submit"id="next" className="btn btn-primary" onClick ={this.paginacion}> Next</button>
 												</div>
-												<Comentarios/>
+												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id"/>
 											</section>
 										</div>
 									</div>
@@ -221,7 +224,8 @@ constructor() {
 								<div className="single-property-wrapper">
 									
 									<div className="single-property-header">
-										 <a href={this.state.data_a.link}><h3><b>Visualizar:</b></h3></a>
+									<Grafico data={this.state.data_a} type="resource_id"/>
+										 <a href={this.state.data_a.link}><h3><b>Visualizar documento:</b></h3></a>
 										   
 										<div className="section">
 											<section id="comments" className="comments wow fadeInRight animated"> 
@@ -235,7 +239,7 @@ constructor() {
       											  <button type="submit"id="prev" className="btn btn-primary" onClick ={this.paginacion}> Prev</button>
       											  <button type="submit"id="next" className="btn btn-primary" onClick ={this.paginacion}> Next</button>
 												</div>
-												<Comentarios/>
+												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id"/>
 											</section>
 										</div>
 									</div>

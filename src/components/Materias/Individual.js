@@ -3,13 +3,15 @@ import React, { Component} from "react";
 import { Link } from "react-router-dom";
 //Componentes
 import Title from '../Global/Title';
+import Grafico from '../Global/Grafico';
 import Comentarios from '../Global/Comentarios.js';
 import ListaRecursos from './ListaRecursos.js';
 //Assets
 import baseURL from '../../url';
 import perfil from '../Global/images/perfil.png';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut} from 'react-chartjs-2';
 import { logPageView } from '../../analytics';
+
 class Individual extends Component {
 constructor() {
 		super()
@@ -24,9 +26,12 @@ constructor() {
 			.then((data) => {
 			 this.setState({ data_a: data})
 			})
+
 	}
 	
 	render() {
+		
+		
 		const doughnut = {
   labels: [
     'Dislikes',
@@ -45,7 +50,10 @@ constructor() {
       ],
     }],
 };
+
+
 		return (
+
 			<div >
 				<Title title={this.state.data_a.name}/>
 				<div className="content-area single-property" style={{backgroundColor: '#FCFCFC'}}>
@@ -55,13 +63,14 @@ constructor() {
 								<div className="single-property-wrapper">
 									<div className="single-property-header">
 										<h3><b>Codigo: {this.state.data_a.code}</b></h3>
+										<Grafico type = "course_id"  data={this.state.data_a} />
 										<div className="section">
 											<section id="comments" className="comments wow fadeInRight animated"> 
 												<h6 className="text wow fadeInLeft animated"><a>Description</a></h6>
 												<div className="s-property-content">
 													<p>Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                              </p>
 												</div>
-												<Comentarios/>
+												<Comentarios listado = {this.state.data_a.commentcourses} post_id={this.props.match.params.id} type = "course_id"/>
 											</section>
 										</div>
 									</div>
@@ -105,6 +114,7 @@ constructor() {
 												</div>
 											<div className="panel-body recent-property-widget">
 												<Doughnut data={doughnut} />
+												
 													</div>
 														</div>
 														<ListaRecursos/>

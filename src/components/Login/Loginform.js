@@ -225,14 +225,13 @@ signOut = (response) => {
                 <h2>Iniciar sesión con redes sociales: </h2> 
                 <br></br>
                 <div className="social pull-left"> 
-        <ul>
-          <li><a className="wow fadeInUp animated animated" onClick={this.twitterResponse} style={{visibility: 'visible', animationName: 'fadeInUp'}}><i className="fa fa-twitter" /></a></li>
-          <li><a className="wow fadeInUp animated animated" onClick={this.facebookResponse} data-wow-delay="0.2s" style={{visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp'}}><i className="fa fa-facebook" /></a></li>
-          <li><a className="wow fadeInUp animated animated" onClick={this.googleResponse} data-wow-delay="0.3s" style={{visibility: 'visible', animationDelay: '0.3s', animationName: 'fadeInUp'}}><i className="fa fa-google-plus" /></a></li>
-          <button type="submit" onClick={this.signOut} className="btn btn-default"> Log out</button>
-                   
-        </ul> 
-      </div>
+                <p>
+                  <a className="login-social" onClick={this.facebookResponse}><i className="fa fa-facebook"></i>&nbsp;Facebook</a> &nbsp; 
+
+                  <a className="login-social" onClick={this.googleResponse}><i className="fa fa-google-plus"></i>&nbsp;Gmail</a>  &nbsp;
+                  <a className="login-social"  onClick={this.twitterResponse}><i className="fa fa-twitter"></i>&nbsp;Twitter</a>   
+                </p>
+               </div>
                 
               </div>
                 

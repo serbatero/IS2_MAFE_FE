@@ -1,19 +1,82 @@
 // Dependencias
 import React, { Component } from 'react';
+import axios from 'axios';
+import store from '../../store';
+import baseURL from '../../url'
+import swal from 'sweetalert2'
 //Componentes
 import Comentario from './Comentario.js';
 
 class Comentarios extends Component {
+	constructor(){
+		super()
+		this.state ={
+			texto: ""
+		}
+	}
+	enviarComentario=(e)=>{
+		
+		let axiosConfig = {headers: {'Content-Type': 'application/json;'}};
+          axios.post(`${baseURL}/comments`, {
+         [this.props.type]: this.props.post_id,
+         comment: this.state.texto,
+         user_id: store.getState().id
+      	 }, axiosConfig)
+       	.then(function (response) {
+      	 //  this.setState({response});
+      	 swal("Su comentario ha sido creado",'','success');
+      	  setTimeout(function(){document.location.reload()},1000);
+        })
+        .catch(function (error) {
+        console.log(error);
+       });
+
+	}
+	actualizarTexto=(e)=>{
+		this.setState({texto: e.target.value});
+	}
 	
 	render(){
+		if(localStorage.getItem('jwtToken')){
+
+		if(this.props.listado === undefined){return(<div></div>)
+		}else  {
 		return(
 			<div>	
-				<h6 className="text wow fadeInLeft animated"><a>Comments</a></h6>
-				<Comentario name={"Julie Alma"} date={"September 23, 2012 at 12:00 am"} comment={"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."}/>
-				<Comentario name={"Louise Armero"} date={"September 23, 2012 at 12:00 am"} comment={"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."}/>
+			<h6 className="text wow fadeInLeft animated"><a>Comentarios</a></h6>
+			{this.props.listado.map((comentario)=>{return(<Comentario type={this.props.type}avatar={comentario.image}key={comentario.id} name={comentario.user} date={comentario.date} comment = {comentario.comment} id={comentario.id} likes={comentario.likes} dislikes={comentario.dislikes} />)})}
+				<section id="comment-form" className="add-comments">
+					<div>
+						<div className="row wow fadeInRight animated">
+							<div className="col-sm-12">
+								<div className="form-group">
+									<label htmlFor="comment">Agrega un comentario <span className="required"></span>
+									</label>
+									<textarea className="form-control" id="comment" value={this.state.texto} onChange={this.actualizarTexto}rows={4} />
+								</div>
+							</div>
+						</div>
+						<div className="row wow fadeInRight animated">
+							<div className="col-sm-12 text-right">
+								<button className="btn btn-primary" onClick={this.enviarComentario}><i className="fa fa-comment-o" /> Comentar</button>
+							</div>
+						</div>
+					</div>
+				</section>
 			</div>
-		);
-	}
+				);
+				}
+		}else{
+			if(this.props.listado === undefined){return(<div></div>)
+		}else  {
+		return(
+				<div>
+					<h6 className="text wow fadeInLeft animated"><a>Comentarios</a></h6>
+		         	{this.props.listado.map((comentario)=>{return(<Comentario type={this.props.type}avatar={comentario.image}key={comentario.id} name={comentario.user} date={comentario.date} comment = {comentario.comment} id={comentario.id} likes={comentario.likes} dislikes={comentario.dislikes} />)})}
+					</div>
+				);}
+			 }
+}
 }
 
 export default Comentarios;

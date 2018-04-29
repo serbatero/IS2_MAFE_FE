@@ -35,7 +35,7 @@ constructor() {
 
 
   render() {  
-    console.log(store.getState().aut )
+    //console.log(store.getState().aut )
     if (localStorage.getItem('jwtToken')) {
     store.dispatch({
          type: "ADD_TO_STORE",
