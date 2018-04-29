@@ -8,12 +8,13 @@ import ListaRecursos from './ListaRecursos.js';
 //Assets
 import baseURL from '../../url';
 import perfil from '../Global/images/perfil.png';
-
+import { Doughnut } from 'react-chartjs-2';
+import { logPageView } from '../../analytics';
 class Individual extends Component {
 constructor() {
 		super()
 		this.state = { data_a: [] }
-		 
+		 logPageView();
 	}
 	componentWillMount(){
 		fetch(`${baseURL}/courses/${this.props.match.params.id}`)
@@ -26,6 +27,24 @@ constructor() {
 	}
 	
 	render() {
+		const doughnut = {
+  labels: [
+    'Dislikes',
+    'Likes',
+  ],
+  datasets: [
+    {
+      data: [this.state.data_a.dislikes, this.state.data_a.likes],
+      backgroundColor: [
+        '#cc0000',
+        '#5cd65c',
+      ],
+      hoverBackgroundColor: [
+        '#cc0000',
+        '#5cd65c',
+      ],
+    }],
+};
 		return (
 			<div >
 				<Title title={this.state.data_a.name}/>
@@ -75,7 +94,20 @@ constructor() {
 											</div>
 										</div>
 									</div>
-									<ListaRecursos/>
+									
+								</aside>
+							</div>
+							<div className="col-md-4 p0">
+								<aside className="sidebar sidebar-property blog-asside-right">
+									<div className="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
+										<div className="panel-heading">
+											<h3 className="panel-title">Estadisticas</h3>
+												</div>
+											<div className="panel-body recent-property-widget">
+												<Doughnut data={doughnut} />
+													</div>
+														</div>
+														<ListaRecursos/>
 								</aside>
 							</div>
 						</div>

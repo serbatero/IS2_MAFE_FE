@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { enviarDatos } from './enviarDatos';
 import swal from 'sweetalert2'
 import Title from '../Global/Title';
+import { logPageView } from '../../analytics';
 class Registerform extends Component {
 constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ constructor(props) {
 
     this.validar = this.validar.bind(this);
     this.vali = this.vali.bind(this);
-
+    logPageView();
 
   }
 
@@ -38,7 +39,6 @@ constructor(props) {
         .then(res => 
             this.setState({
                 todos: res
-
 
             })
         );

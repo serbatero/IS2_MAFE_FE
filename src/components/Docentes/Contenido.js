@@ -11,7 +11,7 @@ class Contenido extends Component {
 					<div id="list-type" className="proerty-th">
 						{this.props.listado.map((docente)=>{
 								return( 
-								<Docente key={docente.id} id= {docente.id}name={docente.name} scoreteacher_id={docente.scoreteacher_id} description={docente.description} likes={docente.likes} dislikes={docente.dislikes}/>
+								<Docente key={docente.id} id= {docente.id}name={docente.name}  description={docente.description} likes={docente.likes} dislikes={docente.dislikes}/>
 								
 								)
 							})

@@ -2,12 +2,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import baseURL from '../../url'
+import { logPageView } from '../../analytics';
+import firebase from 'firebase'
 class Inicio extends Component {
   constructor() {
     super()
-    this.state = {  value: "teacher", texto: ""}
-    
+    this.state = {  value: "teacher", texto: "",name:"BUSCA INFORMACIÓN DE TUS DOCENTES, RECURSOS Y MATERIAS!"}
+    logPageView();
   }
+  componentWillMount(){
+   const nameRef = firebase.database().ref().child('titulo')
+   nameRef.on('value', snapshot => {
+    this.setState({
+    name: snapshot.val()
+   })
+  })
+}
 
   cambiarEstado=(e)=>{
       if(e.target.id==="basic"){
@@ -60,7 +70,7 @@ class Inicio extends Component {
 
             <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
 
-              <h2>BUSCA INFORMACIÓN DE TUS DOCENTES, RECURSOS Y MATERIAS!</h2>
+              <h2>{this.state.name}</h2>
 
               <div className="search-form wow pulse" data-wow-delay="0.8s">
 

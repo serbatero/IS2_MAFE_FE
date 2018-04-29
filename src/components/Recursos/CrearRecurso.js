@@ -6,6 +6,7 @@ import swal from 'sweetalert2'
 import FileBase64 from 'react-file-base64';
 import axios from 'axios';
 import store from '../../store';
+import { logPageView } from '../../analytics';
 class Contenido extends Component {
  constructor(props){
         super(props);
@@ -21,6 +22,7 @@ class Contenido extends Component {
         this.handleInput =this.handleInput.bind(this);
         this.validar = this.validar.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        logPageView();
     }
 
     handleInput(e){

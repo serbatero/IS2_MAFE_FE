@@ -1,8 +1,9 @@
 // Dependencies
 import React, { Component } from 'react';
-import Title from '../Global/Title'
-import baseURL from '../../url'
-import swal from 'sweetalert2'
+import Title from '../Global/Title';
+import baseURL from '../../url';
+import swal from 'sweetalert2';
+import { logPageView } from '../../analytics';
 class Contacto extends Component {
     constructor(props){
         super(props);
@@ -20,7 +21,7 @@ class Contacto extends Component {
 
         }
         
-
+        logPageView();
         this.handleInput =this.handleInput.bind(this);
         this.validar = this.validar.bind(this);
         this.onSubmit = this.onSubmit.bind(this);

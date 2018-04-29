@@ -10,12 +10,15 @@ import Footer from './Global/Footer';
 import items from '../data/menu';
 import store from '../store';
 import { obtenerDatos } from './Login/obtenerDatos';
+import { initGA } from '../analytics';
+
 
 class App extends Component {
 
 constructor() {
     super()
     this.state = {  s_users: []}
+    initGA();
     
   }
  
@@ -25,6 +28,8 @@ constructor() {
         this.setState({ s_users: users })
       })
     }
+    
+    
   }
 
 

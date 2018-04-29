@@ -2,13 +2,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import firebase from 'firebase'
 
 class Footer extends Component {
+  constructor(){
+    super()
+    this.state ={
+      name: "hola"
+    }
+  }
+  componentWillMount(){
+   const nameRef = firebase.database().ref().child('object').child('name')
+   nameRef.on('value', snapshot => {
+    this.setState({
+    name: snapshot.val()
+   })
+  })
+
+  }
   static propTypes = {
     items: PropTypes.array.isRequired
   };
   render() {
+    console.log(this.state.name)
     const { items } = this.props;
     return (
        <div className="footer-area">

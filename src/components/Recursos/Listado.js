@@ -7,6 +7,7 @@ import Busqueda from '../Global/Busqueda.js';
 import Contenido from './Contenido.js';
 import baseURL from '../../url';
 import { Link } from "react-router-dom";
+import { logPageView } from '../../analytics';
 class Listado extends Component {
   constructor() {
     super()
@@ -19,6 +20,7 @@ class Listado extends Component {
        this.setState({ data_a: data, count: 2})
       })
       this.handleCountClick = this.handleCountClick.bind(this);
+      logPageView();
   }
  
   handleCountClick(e) {

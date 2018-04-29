@@ -20,8 +20,8 @@ class Docente extends Component {
 					<div className="item-entry overflow">
 						<h5>{this.props.name}</h5>
 						<div className="dot-hr"></div>
-						<span className="pull-left"><b> Score :</b> {this.props.scoreteacher_id} </span>
-						<span className="proerty-price pull-left limit"> <b> Descripcion :</b> {this.props.description}</span>
+						<span className="pull-left"><b> Descripcion :</b>  </span>
+						<span className="proerty-price pull-left limit"> {this.props.description}</span>
 				
 						<div className="property-icon">
 							<img src={Like} alt=""/>({this.props.likes})

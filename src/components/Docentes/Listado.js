@@ -7,11 +7,12 @@ import Busqueda from '../Global//Busqueda.js';
 import Contenido from './Contenido.js';
 //import data from './data.js';
 import baseURL from '../../url';
-
+import { logPageView } from '../../analytics';
 class Docentes extends Component {
 constructor() {
     super()
     this.state = { data_a: [] , count: 1}
+    logPageView();
      fetch(`${baseURL}/teachers?page=${this.state.count}`)
       .then((response) => {
         return response.json()

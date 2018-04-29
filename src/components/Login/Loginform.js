@@ -9,11 +9,12 @@ import { loginUser } from './loginUser';
 import { obtenerDatos, pPost } from './obtenerDatos';
 import firebase from 'firebase'
 import swal from 'sweetalert2'
-
+import { logPageView } from '../../analytics';
 class Loginform extends Component {
 constructor() {
     super();
     this.state = { email: null, password: null, s_users: [], error: null};
+    logPageView();
   }
 
   componentWillMount(){

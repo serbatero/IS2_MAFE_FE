@@ -7,10 +7,15 @@ import Comentarios from '../Global/Comentarios.js';
 import FileBase64 from 'react-file-base64';
 import axios from 'axios';
 import store from '../../store';
+import { Doughnut } from 'react-chartjs-2';
 //Assets
 import baseURL from '../../url';
 import { Document,Page } from 'react-pdf';
+import { logPageView } from '../../analytics';
 class Individual extends Component {
+
+
+
 constructor() {
 		super()
 		this.state = { 
@@ -23,8 +28,9 @@ constructor() {
             numPages: null,
     		pageNumber: 1
              }
-              this.handleInput =this.handleInput.bind(this);
-this.validar = this.validar.bind(this);		 
+   		this.handleInput =this.handleInput.bind(this);
+		this.validar = this.validar.bind(this);	
+		logPageView();	 
 	}
 	componentWillMount(){
 		fetch(`${baseURL}/resources/${this.props.match.params.id}`)
@@ -101,6 +107,24 @@ this.validar = this.validar.bind(this);
 		}
 	}
 	render() {
+		const doughnut = {
+  labels: [
+    'Dislikes',
+    'Likes',
+  ],
+  datasets: [
+    {
+      data: [this.state.data_a.dislikes, this.state.data_a.likes],
+      backgroundColor: [
+        '#cc0000',
+        '#5cd65c',
+      ],
+      hoverBackgroundColor: [
+        '#cc0000',
+        '#5cd65c',
+      ],
+    }],
+};
 
 		if(localStorage.getItem('jwtToken')){
 		 const { pageNumber, numPages } = this.state;
@@ -116,6 +140,7 @@ this.validar = this.validar.bind(this);
 									
 									<div className="single-property-header">
 										 <a href={this.state.data_a.link}><h3><b>Visualizar:</b></h3></a>
+
 										<div className="section">
 											<section id="comments" className="comments wow fadeInRight animated"> 
 												<h6 className="text wow fadeInLeft animated"><a>Description</a></h6>
@@ -166,6 +191,18 @@ this.validar = this.validar.bind(this);
 									
 								</aside>
 							</div>
+							<div className="col-md-4 p0">
+								<aside className="sidebar sidebar-property blog-asside-right">
+									<div className="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
+										<div className="panel-heading">
+											<h3 className="panel-title">Estadisticas</h3>
+												</div>
+											<div className="panel-body recent-property-widget">
+												<Doughnut data={doughnut} />
+													</div>
+														</div>
+								</aside>
+							</div>
 						</div>
 						<Link to='/recursos'>Volver</Link>
 					</div>
@@ -185,6 +222,7 @@ this.validar = this.validar.bind(this);
 									
 									<div className="single-property-header">
 										 <a href={this.state.data_a.link}><h3><b>Visualizar:</b></h3></a>
+										   
 										<div className="section">
 											<section id="comments" className="comments wow fadeInRight animated"> 
 												<h6 className="text wow fadeInLeft animated"><a>Description</a></h6>
@@ -203,7 +241,18 @@ this.validar = this.validar.bind(this);
 									</div>
 								</div>
 							</div>
-						
+							<div className="col-md-4 p0">
+								<aside className="sidebar sidebar-property blog-asside-right">
+									<div className="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
+										<div className="panel-heading">
+											<h3 className="panel-title">Estadisticas</h3>
+												</div>
+											<div className="panel-body recent-property-widget">
+												<Doughnut data={doughnut} />
+													</div>
+														</div>
+								</aside>
+							</div>
 						</div>
 						<Link to='/recursos'>Volver</Link>
 					</div>

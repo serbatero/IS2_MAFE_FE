@@ -1,7 +1,11 @@
 // Dependencies
 import React, { Component } from 'react';
-
+import { logPageView } from '../../analytics';
 class Page404 extends Component {
+  constructor(){
+    super()
+    logPageView();
+  }
   render() {
     return (
       <div className="content-area error-page" style={{backgroundColor: '#FCFCFC', paddingBottom: 55}}>
