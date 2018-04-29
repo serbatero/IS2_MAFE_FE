@@ -5,16 +5,19 @@ import { Link } from "react-router-dom";
 import Title from '../Global/Title';
 import Comentarios from '../Global/Comentarios.js';
 import ListaRecursos from './ListaRecursos.js';
+
 //Assets
 import baseURL from '../../url';
 import perfil from '../Global/images/perfil.png';
+import comentarios from './comentarios.js';
 
 class Individual extends Component {
-constructor() {
+	constructor() {
 		super()
 		this.state = { data_a: [] }
 		 
 	}
+	
 	componentWillMount(){
 		fetch(`${baseURL}/courses/${this.props.match.params.id}`)
 			.then((response) => {
@@ -38,11 +41,11 @@ constructor() {
 										<h3><b>Codigo: {this.state.data_a.code}</b></h3>
 										<div className="section">
 											<section id="comments" className="comments wow fadeInRight animated"> 
-												<h6 className="text wow fadeInLeft animated"><a>Description</a></h6>
+												<h6 className="text wow fadeInLeft animated"><a>Descripcion</a></h6>
 												<div className="s-property-content">
 													<p>Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                              </p>
 												</div>
-												<Comentarios/>
+												<Comentarios listado = {comentarios} />
 											</section>
 										</div>
 									</div>

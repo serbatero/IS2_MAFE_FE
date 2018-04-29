@@ -8,9 +8,32 @@ class Comentarios extends Component {
 	render(){
 		return(
 			<div>	
-				<h6 className="text wow fadeInLeft animated"><a>Comments</a></h6>
-				<Comentario name={"Julie Alma"} date={"September 23, 2012 at 12:00 am"} comment={"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."}/>
-				<Comentario name={"Louise Armero"} date={"September 23, 2012 at 12:00 am"} comment={"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."}/>
+				<h6 className="text wow fadeInLeft animated"><a>Comentarios</a></h6>
+				{this.props.listado.map((comentario)=>{
+								return (
+								<Comentario key={comentario.id} name={comentario.user} date={comentario.date} comment = {comentario.comment} id={comentario.id} likes={comentario.likes} dislikes={comentario.dislikes} />
+								)
+							})
+				}
+
+				<section id="comment-form" className="add-comments">
+					<form>
+						<div className="row wow fadeInRight animated">
+							<div className="col-sm-12">
+								<div className="form-group">
+									<label htmlFor="comment">Agrega un comentario <span className="required"></span>
+									</label>
+									<textarea className="form-control" id="comment" rows={4} defaultValue={""} />
+								</div>
+							</div>
+						</div>
+						<div className="row wow fadeInRight animated">
+							<div className="col-sm-12 text-right">
+								<button className="btn btn-primary"><i className="fa fa-comment-o" /> Comentar</button>
+							</div>
+						</div>
+					</form>
+				</section>
 			</div>
 		);
 	}

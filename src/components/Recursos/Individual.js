@@ -7,6 +7,7 @@ import Comentarios from '../Global/Comentarios.js';
 
 //Assets
 import baseURL from '../../url';
+import comentarios from './comentarios.js';
 
 class Individual extends Component {
 constructor() {
@@ -41,7 +42,7 @@ constructor() {
 												<div className="s-property-content">
 													<p>Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                              </p>
 												</div>
-												<Comentarios/>
+												<Comentarios listado = {comentarios} />
 											</section>
 										</div>
 									</div>

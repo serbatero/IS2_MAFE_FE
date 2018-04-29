@@ -45,7 +45,6 @@ constructor() {
       })
   }
 
-
 	render(){
 		
 		return(

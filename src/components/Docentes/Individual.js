@@ -8,13 +8,14 @@ import ListaMaterias from './ListaMaterias.js';
 //Assets
 import baseURL from '../../url';
 import perfil from '../Global/images/perfil.png';
+import comentarios from './comentarios.js';
 
 class Individual extends Component {
-constructor() {
+	constructor() {
 		super()
 		this.state = { data_a: [] }
-		 
 	}
+
 	componentWillMount(){
 		fetch(`${baseURL}/teachers/${this.props.match.params.id}`)
 			.then((response) => {
@@ -24,6 +25,7 @@ constructor() {
 			 this.setState({ data_a: data})
 			})
 	}
+
 	render() {  
 		return (
 			<div >
@@ -40,7 +42,7 @@ constructor() {
 												<div className="s-property-content">
 													<p>{this.state.data_a.description}</p>
 												</div>
-												<Comentarios/>
+												<Comentarios listado = {comentarios} />
 											</section>
 										</div>
 									</div>

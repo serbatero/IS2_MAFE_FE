@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 //Assets
 import perfil from '../Global/images/perfil.png';
+import like from './images/like.png';
+import dislike from './images/dislike.png';
 
 
 class Comentario extends Component {
@@ -20,9 +22,12 @@ class Comentario extends Component {
 						<h6 className="text-uppercase"><a>{this.props.name}</a></h6>
 						<p className="posted"><i className="fa fa-clock-o" />{this.props.date}</p>
 						<p>{this.props.comment}</p>
+						<div className="property-icon">
+							<img src={like} alt=""/> {this.props.likes}
+							<img src={dislike} alt=""/> {this.props.dislikes}
+						</div>	
 					</div>
 				</div>
-		
 		);
 	}
 }
