@@ -1,6 +1,6 @@
 // Dependencies
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 
 // Components
 import Header from './Global/Header';
@@ -10,12 +10,15 @@ import Footer from './Global/Footer';
 import items from '../data/menu';
 import store from '../store';
 import { obtenerDatos } from './Login/obtenerDatos';
+import { initGA } from '../analytics';
+
 
 class App extends Component {
 
 constructor() {
     super()
     this.state = {  s_users: []}
+    initGA();
     
   }
  
@@ -25,13 +28,14 @@ constructor() {
         this.setState({ s_users: users })
       })
     }
+    
+    
   }
 
-   static propTypes = {
-    children: PropTypes.object.isRequired
-  };
+
 
   render() {  
+    //console.log(store.getState().aut )
     if (localStorage.getItem('jwtToken')) {
     store.dispatch({
          type: "ADD_TO_STORE",
@@ -39,13 +43,15 @@ constructor() {
          username: this.state.s_users.username,
          email: this.state.s_users.email,
          avatar: this.state.s_users.avatar,
-         career_id: this.state.s_users.career_id
+         career_id: this.state.s_users.career_id,
+         aut: true
      })}
-    const { children } = this.props;
+   // const { children } = this.props;
+   //<Content body={children} />
     return (
       <div >
         <Header items={items}/>
-        <Content body={children} />
+        <Content/>
         <Footer items={items}/>
       </div>
     );

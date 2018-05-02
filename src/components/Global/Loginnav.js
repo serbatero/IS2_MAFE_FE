@@ -22,6 +22,8 @@ constructor() {
      <div className="button navbar-right">
            <Link  to="/login">
            <button className="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s">Log in</button>
+            </Link>
+            <Link to="/register">
            <button className="navbar-btn nav-button wow fadeInRight"  data-wow-delay="0.48s">Sign up</button>
            </Link> 
      </div>

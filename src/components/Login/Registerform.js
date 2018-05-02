@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { enviarDatos } from './enviarDatos';
 import swal from 'sweetalert2'
-
+import Title from '../Global/Title';
+import { logPageView } from '../../analytics';
 class Registerform extends Component {
 constructor(props) {
     super(props);
@@ -9,12 +10,12 @@ constructor(props) {
 
     this.validar = this.validar.bind(this);
     this.vali = this.vali.bind(this);
-
+    logPageView();
 
   }
 
  setField (e) {
- 	if(e.target.id === 'email1'){
+  if(e.target.id === 'email1'){
     this.setState({
       email: e.target.value
     })
@@ -38,7 +39,6 @@ constructor(props) {
         .then(res => 
             this.setState({
                 todos: res
-
 
             })
         );
@@ -149,6 +149,10 @@ constructor(props) {
      
 
       return(<div>
+        <Title title='Sign up'/>
+        <div className="register-area" style={{backgroundColor: 'rgb(249, 249, 249)'}}>
+        
+        <div className="container">
         <div className="col-md-6">
        <div className="box-for overflow">
         <div className="col-md-12 col-xs-12 register-blocks">
@@ -161,13 +165,18 @@ constructor(props) {
           </div>
       </div>
     </div>
+      </div>
+      </div>
       </div>)
 
     }else
    
      return(
 
-
+<div><Title title='Sign up'/>
+        <div className="register-area" style={{backgroundColor: 'rgb(249, 249, 249)'}}>
+        
+        <div className="container">
 
           <div className="col-md-6">
        <div className="box-for overflow">
@@ -192,6 +201,9 @@ constructor(props) {
           </form>
         </div>
       </div>
+    </div>
+    </div>
+    </div>
     </div>
       )
     }

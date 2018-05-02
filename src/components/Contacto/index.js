@@ -1,8 +1,9 @@
 // Dependencies
 import React, { Component } from 'react';
-import Title from '../Global/Title'
-import baseURL from '../../url'
-import swal from 'sweetalert2'
+import Title from '../Global/Title';
+import baseURL from '../../url';
+import swal from 'sweetalert2';
+import { logPageView } from '../../analytics';
 class Contacto extends Component {
     constructor(props){
         super(props);
@@ -20,7 +21,7 @@ class Contacto extends Component {
 
         }
         
-
+        logPageView();
         this.handleInput =this.handleInput.bind(this);
         this.validar = this.validar.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -83,12 +84,15 @@ class Contacto extends Component {
         e.preventDefault();
         if((this.state.nombreErr !=="")||(this.state.apellidoErr !== "") ||(this.state.asuntoErr !== "") ||(this.state.correoErr !== "") ){
            swal("Digite los campos señalados",'','error'); 
-        }else{
+        }else if((this.state.nombre ==="")||(this.state.apellido === "") ||(this.state.asunto === "") ||(this.state.correo === "") ){
+            swal("No ha introducido ningún campo",'','error');
+        }
+        else{
             swal("Su mensaje ha sido enviado",'','success');
         }
         
 
-       /* this.setState( {
+        this.setState( {
             nombre : '',
             nombreErr :'',
             apellido : '',
@@ -100,7 +104,7 @@ class Contacto extends Component {
             mensaje : '',
             mensajeErr: ''
 
-        });*/
+        });
 
       const contactParams = {"name": this.state.nombre, "lastname": this.state.apellido,
       "email": this.state.correo, "subject": this.state.asunto, "message": this.state.mensaje}

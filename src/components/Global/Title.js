@@ -1,11 +1,9 @@
 // Dependencies
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 
 class Title extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired
-  };
+ 
   render() {
     return (
     <div className="page-head"> 
