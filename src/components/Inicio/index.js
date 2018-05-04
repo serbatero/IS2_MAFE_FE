@@ -1,9 +1,10 @@
 // Dependencies
 import React, { Component } from 'react';
 import axios from 'axios';
-import baseURL from '../../url'
+import baseURL from '../../url';
 import { logPageView } from '../../analytics';
-import firebase from 'firebase'
+import firebase from 'firebase';
+import swal from 'sweetalert2';
 class Inicio extends Component {
   constructor() {
     super()
@@ -43,11 +44,13 @@ class Inicio extends Component {
          [`${this.state.value}_name`]: this.state.texto
        }, axiosConfig)
        .then(function (response) {
+        
         console.log(response.data[0].id)
         window.location.replace(`${ruta}/${response.data[0].id}`);
        //  this.setState({response.data.id});
         })
         .catch(function (error) {
+          swal("Ningun dato encontrado",'','error'); 
         console.log(error);
        });
   }

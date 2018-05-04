@@ -11,10 +11,18 @@ class Comentarios extends Component {
 	constructor(){
 		super()
 		this.state ={
-			texto: ""
+			texto: "",
+			errTexto:""
 		}
 	}
 	enviarComentario=(e)=>{
+		if(this.state.errTexto !== ''){
+			swal('Reduce el contenido de tu comentario','', 'error');
+		}else if(this.state.texto === ""){
+			swal('Escribe un comentario','','warning')
+		}
+		else{
+
 		
 		let axiosConfig = {headers: {'Content-Type': 'application/json;'}};
           axios.post(`${baseURL}/comments`, {
@@ -30,6 +38,13 @@ class Comentarios extends Component {
         .catch(function (error) {
         console.log(error);
        });
+    }
+
+	}
+	valida(e){
+		if((this.state.texto.length > 150) && (e.target.id ==='comment') ){
+			this.setState({errTexto: 'El comentario debe ser menor a 150 caracteres'});
+		}
 
 	}
 	actualizarTexto=(e)=>{
@@ -50,9 +65,9 @@ class Comentarios extends Component {
 						<div className="row wow fadeInRight animated">
 							<div className="col-sm-12">
 								<div className="form-group">
-									<label htmlFor="comment">Agrega un comentario <span className="required"></span>
+									<label htmlFor="comment">Agrega un comentario &nbsp; <font color='red'>{this.state.errTexto}</font><span className="required"></span>
 									</label>
-									<textarea className="form-control" id="comment" value={this.state.texto} onChange={this.actualizarTexto}rows={4} />
+									<textarea className="form-control" id="comment" value={this.state.texto} onChange={this.actualizarTexto} onInput={(e)=>this.valida(e)} rows={4} />
 								</div>
 							</div>
 						</div>

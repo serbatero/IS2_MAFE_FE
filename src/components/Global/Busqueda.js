@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import baseURL from '../../url'
-
+import baseURL from '../../url';
+import swal from 'sweetalert2';
 class Busqueda extends Component {
 	constructor() {
     super()
@@ -34,11 +34,14 @@ class Busqueda extends Component {
          [`${this.state.value}_name`]: this.state.texto
        }, axiosConfig)
        .then(function (response) {
+       	
         console.log(response.data[0].id)
         window.location.replace(`${ruta}/${response.data[0].id}`);
        //  this.setState({response.data.id});
+
         })
         .catch(function (error) {
+        	swal("Ningun dato encontrado",'','error');
         console.log(error);
        });
   }

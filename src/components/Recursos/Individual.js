@@ -13,6 +13,7 @@ import Grafico from '../Global/Grafico';
 import baseURL from '../../url';
 import { Document,Page } from 'react-pdf';
 import { logPageView } from '../../analytics';
+import swal from 'sweetalert2';
 class Individual extends Component {
 
 
@@ -66,6 +67,9 @@ constructor() {
   }
 
 	ModificarRecurso=(e)=>{
+		if(this.state.mensaje === '' || this.state.nombre === '' || this.state.datos === null){
+			swal('Llene los campos señalados', '','error')
+		}else{
 
 		console.log(this.state);
 		let axiosConfig = {
@@ -88,6 +92,8 @@ constructor() {
   			.catch(function (error) {
 			  console.log(error);
  			 });
+  			swal('El recurso ha sido modificado', '', 'success')
+  		}
 
 	}
 	paginacion=(e)=>{

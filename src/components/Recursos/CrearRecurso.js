@@ -1,4 +1,3 @@
-// Dependencias
 import React, { Component } from 'react';
 import Title from '../Global/Title';
 import baseURL from '../../url'
@@ -39,25 +38,18 @@ class Contenido extends Component {
         if(this.state.nombre.length >=3){
             this.setState({nombreErr: ''});
         }
+        
+
     }
 
     onSubmit(e){
 
 //        console.log(this.state);
         e.preventDefault();
-        if((this.state.nombreErr !=="")  ){
-           swal("Digite los campos señalados",'','error'); 
+        if((this.state.nombreErr !=="" || this.state.nombre === '' || this.state.datos=== null || this.state.mensaje === '')  ){
+           swal("Llene los campos señalados",'','error'); 
         }else{
-            swal("Su recurso ha sido creado",'','success');
-        }
-        this.setState( {
-            nombre : '',
-            nombreErr :'',
-            mensaje : '',
-            mensajeErr: ''
-
-        });  
-           let axiosConfig = {
+            let axiosConfig = {
          headers: {
            'Content-Type': 'application/json;'
                   }
@@ -76,6 +68,17 @@ class Contenido extends Component {
         console.log(error);
        });
 
+            swal("Su recurso ha sido creado",'','success');
+        }
+        this.setState( {
+            nombre : '',
+            nombreErr :'',
+            mensaje : '',
+            mensajeErr: ''
+
+        });  
+
+        
 
 
       

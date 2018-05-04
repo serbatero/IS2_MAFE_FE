@@ -8,7 +8,7 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {   nombre : '',
-    nombreErr :'',
+            nombreErr :'',
             correo : '',
             correoErr : ''
             
@@ -20,7 +20,10 @@ class Profile extends Component {
 
 handleFinish(e){
      localStorage.removeItem('jwtToken')
-     window.location.reload()
+     swal({title:'Vuelve pronto...', timer:1000, showConfirmButton:false, onOpen: () =>{
+        swal.showLoading()
+      }});
+     setTimeout(function(){window.location.reload()},1000);
   }
 
 handleInput(e){
@@ -30,6 +33,9 @@ handleInput(e){
     };
 
 onSubmit(e){
+  if(this.state.nombre === '' || this.state.correo === ''){
+    swal({title:'No haz cambiado ningún campo', type:'warning'})
+  }else{
 
  let axiosConfig = {
       headers: {
@@ -42,7 +48,17 @@ onSubmit(e){
     email:this.state.email
   }, axiosConfig)
   .then(function (response) {
-    window.location.reload()
+    swal({
+      title: '¿Estás seguro?',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, lo estoy',
+      cancelButtonText: 'Cancelar'
+    }).then((result)=> {
+      setTimeout(function(){window.location.reload()},2000);
+    })
+    
+    //window.location.reload()
     //console.log(response);
   })
   .catch(function (error) {
@@ -52,7 +68,7 @@ onSubmit(e){
             nombre : '',
             correo : ''
         });
-
+      }
     };
 
   getFiles(files){
