@@ -45,7 +45,7 @@ constructor() {
 	}
 	getFiles(files){
    this.setState({datos: files})
-   console.log(this.state.datos);
+  //console.log(this.state.datos);
   }
   handleInput(e){
         this.setState({
@@ -136,7 +136,7 @@ constructor() {
 
 		if(localStorage.getItem('jwtToken')){
 		 const { pageNumber, numPages } = this.state;
-		
+		//console.log(this.state.data_a);
 		return (
 			<div >
 			<Title title={this.state.data_a.name}/>
@@ -162,7 +162,7 @@ constructor() {
       											  <button type="submit"id="prev" className="btn btn-primary" onClick ={this.paginacion}> Prev</button>
       											  <button type="submit"id="next" className="btn btn-primary" onClick ={this.paginacion}> Next</button>
 												</div>
-												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id"/>
+												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id" valor="resources"/>
 											</section>
 										</div>
 									</div>
@@ -245,6 +245,7 @@ constructor() {
       											  <button type="submit"id="prev" className="btn btn-primary" onClick ={this.paginacion}> Prev</button>
       											  <button type="submit"id="next" className="btn btn-primary" onClick ={this.paginacion}> Next</button>
 												</div>
+
 												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id"/>
 											</section>
 										</div>

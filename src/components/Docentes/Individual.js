@@ -61,7 +61,7 @@ constructor() {
 												<div className="s-property-content">
 													<p>{this.state.data_a.description}</p>
 												</div>
-												<Comentarios listado = {this.state.data_a.commentteachers} post_id={this.props.match.params.id} type="teacher_id"/>
+												<Comentarios listado = {this.state.data_a.commentteachers} post_id={this.props.match.params.id} type="teacher_id" valor="courses"/>
 											</section>
 										</div>
 									</div>
