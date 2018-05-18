@@ -1,15 +1,12 @@
 # PROYECTO MAFE
 
-Lista de features desarrollados - Iteración 4:
+Lista de features desarrollados - Iteración 5:
 
-* Crear seed con carreras y sus respectivas materias reales: Diego Garcia
-* Generación de reportes con graficas en pdf: Diego Garcia
-* Visualización de comentarios,likes: Oscar Gomez
-* Visualización de graficas en front: Yesid Ochoa
-* Implementacion en back de comentarios y calificaciones: Yesid Ochoa
-* Validaciones en busquedas, notificaciones, comentarios y modificaciones: Alejandra Bautista
-* Implementación de active jobs para usuarios: Heyner Garcia
-* Añadir conexión con Api de google analytics para tener estadisticas del sitio y  base de datos en tiempo real de firebase: Yesid Ochoa
+* Crear seed con carreras y sus respectivas materias reales con asociaciones: Diego Garcia
+* Visualización de asociaciones en materias,docentes y recursos front: Oscar Gomez y Alejandra Bautista
+* Asociaciones en back y modificación de serializer: Yesid Ochoa
+* Implementacion comentarios en tiempo real: Yesid Ochoa
+* Jobs y crons: Alejandro Garcia y Heyner Garcia
 
 * Link back:
 * https://mafe-app-back.herokuapp.com/
