@@ -15,7 +15,7 @@ class Materia extends Component {
 					<div className="item-thumb" >
 					<Link to={`/materias/${this.props.id}`}>
 						<img src={Image}  alt=""/>
-						</Link>
+					</Link>
 					</div>
 					<div className="item-entry overflow">
 						<h5>{this.props.name}</h5>
@@ -25,8 +25,8 @@ class Materia extends Component {
 						<span className="proerty-price pull-left"> <b></b> {this.props.link}</span>
 						<p style={{display: undefined}}></p>
 						<div className="property-icon">
-							<img src={Like} alt=""/>(2)
-							<img src={Dislike} alt=""/>(1)  
+							<img src={Like} alt=""/>({this.props.likes})
+							<img src={Dislike} alt=""/>({this.props.dislikes})  
 						</div>
 					</div>
 				</div>

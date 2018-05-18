@@ -9,6 +9,7 @@ import App from './components/App';
 // Assets
 import './index.css';
 
+
 firebase.initializeApp({
 	apiKey: "AIzaSyD4YsB7cophC2mO6vmrvaTXftGEuW3Sj70",
     authDomain: "mafe-app.firebaseapp.com",
@@ -17,7 +18,6 @@ firebase.initializeApp({
     storageBucket: "mafe-app.appspot.com",
     messagingSenderId: "504533869340"
 })
-
 render(
   <Router>
     <App />

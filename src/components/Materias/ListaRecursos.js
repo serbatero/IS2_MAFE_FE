@@ -5,16 +5,24 @@ import RecursoAsociado from './RecursoAsosiado.js';
 
 class ListaRecursos extends Component {
 	render(){
-		return(
-			<div className="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
-				<div className="panel-heading">
-					<h3 className="panel-title">Recursos Asocidos</h3>
+		if(this.props.listado === undefined){return(<div></div>)}
+		else{
+			return(
+				<div className="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
+					<div className="panel-heading">
+						<h3 className="panel-title">Recursos Asocidos</h3>
+					</div>
+					<div className="panel-body recent-property-widget">
+						{this.props.listado.map((recurso)=>{
+								return (
+								<RecursoAsociado key={recurso.id} name={recurso.resource_name} id = {recurso.resource_id} likes = {recurso.likes_resource} />
+								)
+							})
+						}
+					</div>
 				</div>
-				<div className="panel-body recent-property-widget">
-					<RecursoAsociado name={"Documento PDF"} score={"Puntaje"}/>
-				</div>
-			</div>
-		);
+			);	
+		}
 	}
 }
 

@@ -8,10 +8,11 @@ const reducer = (state,action) => {
             username: action.username,
             email: action.email,
             avatar: action.avatar,
-            career_id: action.career_id
+            career_id: action.career_id,
+            aut: true
         }
     }
     return state;
 };
 
-export default createStore(reducer, {id: "sinnada",username: "sinnadas",email: "",avatar: "",career_id: ""});
+export default createStore(reducer, {id: "sinnada",username: "sinnadas",email: "",avatar: "",career_id: "",aut: false});

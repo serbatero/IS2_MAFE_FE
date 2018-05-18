@@ -1,7 +1,9 @@
 // Dependencies
 import React, { Component } from 'react';
-import Title from '../Global/Title'
-import baseURL from '../../url'
+import Title from '../Global/Title';
+import baseURL from '../../url';
+import swal from 'sweetalert2';
+import { logPageView } from '../../analytics';
 class Contacto extends Component {
     constructor(props){
         super(props);
@@ -19,7 +21,7 @@ class Contacto extends Component {
 
         }
         
-
+        logPageView();
         this.handleInput =this.handleInput.bind(this);
         this.validar = this.validar.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -81,13 +83,13 @@ class Contacto extends Component {
         console.log(this.state);
         e.preventDefault();
         if((this.state.nombreErr !=="")||(this.state.apellidoErr !== "") ||(this.state.asuntoErr !== "") ||(this.state.correoErr !== "") ){
-           alert("Digite los campos señalados"); 
+           swal("Digite los campos señalados",'','error'); 
         }else{
-            alert("Su mensaje ha sido enviado");
+            swal("Su mensaje ha sido enviado",'','success');
         }
         
 
-       /* this.setState( {
+        this.setState( {
             nombre : '',
             nombreErr :'',
             apellido : '',
@@ -99,7 +101,7 @@ class Contacto extends Component {
             mensaje : '',
             mensajeErr: ''
 
-        });*/
+        });
 
       const contactParams = {"name": this.state.nombre, "lastname": this.state.apellido,
       "email": this.state.correo, "subject": this.state.asunto, "message": this.state.mensaje}
@@ -129,25 +131,25 @@ class Contacto extends Component {
                     <div className="col-sm-6">
                         <div className="form-group">
                             <label  color='red'>Nombre(s) &nbsp; <font color='red'> {this.state.nombreErr}</font></label>
-                            <input type="text" className="form-control" id="firstname" name ='nombre'value={this.state.nombre} onChange = {this.handleInput}onBlur = {this.validar} required/>                        
+                            <input type="text" className="form-control" id="firstname" name ='nombre'value={this.state.nombre} onChange = {this.handleInput}onInput = {this.validar} onBlur = {this.validar}required/>                        
                         </div>
                     </div>
                     <div className="col-sm-6">
                         <div className="form-group">
                             <label >Apellido(s) &nbsp; <font color='red'> {this.state.apellidoErr}</font></label>
-                            <input type="text" className="form-control" id="lastname" name ='apellido' value={this.state.apellido} onChange = {this.handleInput} onBlur = {this.validar} required/>
+                            <input type="text" className="form-control" id="lastname" name ='apellido' value={this.state.apellido} onChange = {this.handleInput} onInput = {this.validar} required/>
                         </div>
                     </div>
                     <div className="col-sm-6">
                         <div className="form-group">
                             <label >Correo Electronico &nbsp; <font color='red'> {this.state.correoErr}</font></label>
-                            <input type="text" className="form-control" id="email" name='correo'value={this.state.correo} onChange = {this.handleInput} onBlur = {this.validar}required/>
+                            <input type="text" className="form-control" id="email" name='correo'value={this.state.correo} onChange = {this.handleInput} onInput = {this.validar}required/>
                         </div>
                     </div>
                     <div className="col-sm-6">
                         <div className="form-group">
                             <label >Asunto &nbsp; <font color='red'>{this.state.asuntoErr}</font></label>
-                            <input type="text" className="form-control" id="subject" name ='asunto'value={this.state.asunto} onChange = {this.handleInput } onBlur = {this.validar} required/>
+                            <input type="text" className="form-control" id="subject" name ='asunto'value={this.state.asunto} onChange = {this.handleInput } onInput = {this.validar} required/>
 
                         </div>
                     </div>

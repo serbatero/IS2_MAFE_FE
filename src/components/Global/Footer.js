@@ -2,13 +2,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import firebase from 'firebase'
 
 class Footer extends Component {
+  constructor(){
+    super()
+    this.state ={
+      name: ""
+    }
+  }
+  componentWillMount(){
+   const nameRef = firebase.database().ref().child('object').child('name')
+   nameRef.on('value', snapshot => {
+    this.setState({
+    name: snapshot.val()
+   })
+  })
+
+  }
   static propTypes = {
     items: PropTypes.array.isRequired
   };
   render() {
+    //console.log(this.state.name)
     const { items } = this.props;
     return (
        <div className="footer-area">
@@ -19,7 +35,7 @@ class Footer extends Component {
                 <div className="single-footer">
                   <h4>Quienes somos? </h4>
                   <div className="footer-title-line" />
-                  <img src="assets/img/logo.png" alt="logo" className="wow pulse" data-wow-delay="1s"  height="200px"/>
+                  <img src="/assets/img/logo.png" alt="logo" className="wow pulse" data-wow-delay="1s"  height="200px"/>
                   <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
                   <ul className="footer-adress">
                     <li><i className="pe-7s-map-marker strong"> </i> Nuestra dirección</li>

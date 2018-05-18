@@ -6,14 +6,15 @@
 //https://console.firebase.google.com/project/mafe-app/overview
 import React, { Component } from 'react';
 import { loginUser } from './loginUser';
-import { obtenerDatos, pPost,pGet } from './obtenerDatos';
+import { obtenerDatos, pPost } from './obtenerDatos';
 import firebase from 'firebase'
-
-
+import swal from 'sweetalert2'
+import { logPageView } from '../../analytics';
 class Loginform extends Component {
 constructor() {
     super();
     this.state = { email: null, password: null, s_users: [], error: null};
+    logPageView();
   }
 
   componentWillMount(){
@@ -26,7 +27,7 @@ constructor() {
   }
   
  setField (e) {
- 	if(e.target.id === 'email'){
+  if(e.target.id === 'email'){
     this.setState({
       email: e.target.value
     })
@@ -39,51 +40,61 @@ constructor() {
   }
 
 
-  handleSubmit = (e) =>{
-       e.preventDefault()
+handleSubmit = (e) =>{
+     e.preventDefault()
       const loginParams = {"auth": {"email": this.state.email, "password": this.state.password}}
-      loginUser(loginParams,'user_token').then((token) => {
+      loginUser(loginParams).then((token) => {
       localStorage.setItem("jwtToken", token.jwt)
     }).then(  this.setState({error: null}) ).catch((error) => {
       this.setState({error: "Email o contraseña incorrecta"})
     });
     if(this.state.error === null){
     setTimeout(function(){document.location.reload()},1000);
+    swal({
+      title:'Cargando...',
+      text:'',
+      timer:1000,
+      onOpen: () =>{
+        swal.showLoading()
+      }
+    })
     }
-
+    
   }
-
-
 
   googleResponse = (response) => {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
      const loginParams = {"name": result.additionalUserInfo.profile.name,"email": result.additionalUserInfo.profile.email,
      "avatar": result.additionalUserInfo.profile.picture }
-     pPost(loginParams,"socials").then((user) => {
-     pGet(`socials/${user[0].id}`).then((token) => {
-      //console.log(token.jwt);
+      pPost(loginParams,"socials").then((token) => {
+    console.log(token);
+    
+     // console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
-    })
-    }).then(  this.setState({error: null}) ).catch((error) => {
-   //   this.setState({error: "Email o contraseña incorrecta"})
-    });
-    if(this.state.error === null){
+      swal({
+      title:'Cargando...',
+      text:'',
+      timer:1000,
+      onOpen: () =>{
+        swal.showLoading()}  })   })
    
+
+   
+    if(this.state.error === null){
+   // setTimeout(function(){document.location.reload()},1000);
     }
   // This gives you a Google Access Token. You can use it to access the Google API.
   //var token = result.credential.accessToken;
   // The signed-in user info.
   //var user = result.user;
-  console.log(result.additionalUserInfo.profile)
-  // ...
-  }).catch(function(error) {
+}).catch(function(error) {
   // Handle Errors here.
   //var errorCode = error.code;
   //var errorMessage = error.message;
   // The email of the user's account used.
-  //var email = error.email;
+ // var email = error.email;
   // The firebase.auth.AuthCredential type that was used.
   //var credential = error.credential;
   // ...
@@ -96,15 +107,22 @@ constructor() {
  firebase.auth().signInWithPopup(provider).then(function(result) {
   const loginParams = {"name": result.additionalUserInfo.profile.name,"email": `${result.additionalUserInfo.profile.screen_name}@correo.com`,
      "avatar": result.additionalUserInfo.profile.profile_image_url }
-     pPost(loginParams,"socials").then((user) => {
-     pGet(`socials/${user[0].id}`).then((token) => {
+     
+     pPost(loginParams,"socials").then((token) => {
+    console.log(token);
+    
      // console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
-    })
-    }).then(  this.setState({error: null}) ).catch((error) => {
-   //   this.setState({error: "Email o contraseña incorrecta"})
-    });
+      swal({
+      title:'Cargando...',
+      text:'',
+      timer:1000,
+      onOpen: () =>{
+        swal.showLoading()}  })   })
+   
+
+   
     if(this.state.error === null){
    // setTimeout(function(){document.location.reload()},1000);
     }
@@ -129,15 +147,21 @@ constructor() {
   firebase.auth().signInWithPopup(provider).then(function(result) {
  const loginParams = {"name": result.additionalUserInfo.profile.name,"email": result.additionalUserInfo.profile.email,
      "avatar": result.additionalUserInfo.profile.picture.data.url }
-     pPost(loginParams,"socials").then((user) => {
-     pGet(`socials/${user[0].id}`).then((token) => {
-      //console.log(token.jwt);
+      pPost(loginParams,"socials").then((token) => {
+    console.log(token);
+    
+     // console.log(token.jwt);
      localStorage.setItem("jwtToken", token.jwt)
       setTimeout(function(){document.location.reload()},1000);
-    })
-    }).then(  this.setState({error: null}) ).catch((error) => {
-   //   this.setState({error: "Email o contraseña incorrecta"})
-    });
+      swal({
+      title:'Cargando...',
+      text:'',
+      timer:1000,
+      onOpen: () =>{
+        swal.showLoading()}  })   })
+   
+
+   
     if(this.state.error === null){
    // setTimeout(function(){document.location.reload()},1000);
     }
@@ -145,15 +169,12 @@ constructor() {
   //var token = result.credential.accessToken;
   // The signed-in user info.
   //var user = result.user;
-  console.log(result.additionalUserInfo.profile)
-  // ...
-  
 }).catch(function(error) {
   // Handle Errors here.
   //var errorCode = error.code;
   //var errorMessage = error.message;
   // The email of the user's account used.
-  //var email = error.email;
+ // var email = error.email;
   // The firebase.auth.AuthCredential type that was used.
   //var credential = error.credential;
   // ...
@@ -176,7 +197,7 @@ signOut = (response) => {
           <div className="col-md-6">
             <div className="box-for overflow">                         
               <div className="col-md-12 col-xs-12 login-blocks">
-                <h2>Login : </h2> 
+                <h2>Iniciar sesión : </h2> 
                 <form>
                   <div className="form-group">
                     <label htmlFor="email">Email</label>
@@ -201,14 +222,16 @@ signOut = (response) => {
           <div className="col-md-6">
             <div className="box-for overflow">                         
               <div className="col-md-12 col-xs-12 login-blocks">
-                <h2>Login with social networks: </h2> 
-<button type="submit"  onClick={this.googleResponse} className="btn btn-default"> google</button>
-                <button type="submit" onClick={this.facebookResponse} className="btn btn-default"> facebook</button>
-                <button type="submit" onClick={this.twitterResponse} className="btn btn-default"> twitter</button>
+                <h2>Iniciar sesión con redes sociales: </h2> 
+                <br></br>
+                <div className="social pull-left"> 
+                <p>
+                  <a className="login-social" onClick={this.facebookResponse}><i className="fa fa-facebook"></i>&nbsp;Facebook</a> &nbsp; 
 
-
-                <button type="submit" onClick={this.signOut} className="btn btn-default"> google log out</button>
-                
+                  <a className="login-social" onClick={this.googleResponse}><i className="fa fa-google-plus"></i>&nbsp;Gmail</a>  &nbsp;
+                  <a className="login-social"  onClick={this.twitterResponse}><i className="fa fa-twitter"></i>&nbsp;Twitter</a>   
+                </p>
+               </div>
                 
               </div>
                 

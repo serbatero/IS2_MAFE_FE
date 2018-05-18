@@ -7,11 +7,12 @@ import Busqueda from '../Global//Busqueda.js';
 import Contenido from './Contenido.js';
 //import data from './data.js';
 import baseURL from '../../url';
-
+import { logPageView } from '../../analytics';
 class Docentes extends Component {
 constructor() {
     super()
     this.state = { data_a: [] , count: 1}
+    logPageView();
      fetch(`${baseURL}/teachers?page=${this.state.count}`)
       .then((response) => {
         return response.json()
@@ -45,12 +46,21 @@ constructor() {
       })
   }
 
+  tab(){
+    window.open('http://localhost:3000/teacherspdfs.pdf',"pdf", "width =650, height=670, scrollbars=YES")
+  }
+
 	render(){
-		
 		return(
 			<div>
 				<Title title='Docentes'/>
-				<Busqueda />
+        <div className="col-md-3 p0 padding-top-40">
+          <div className="blog-asside-right pr0">
+				    <Busqueda />
+            <button onClick ={this.tab}type="submit" className="btn btn-default">Ver docentes en pdf</button>
+          </div>
+
+        </div>
 				<Contenido listado={this.state.data_a}/>
 				<div className="col-md-12"> 
           <div className="pull-right">

@@ -6,7 +6,7 @@ import Title from '../Global/Title';
 import Busqueda from '../Global/Busqueda.js';
 import Contenido from './Contenido.js';
 import baseURL from '../../url';
-
+import { logPageView } from '../../analytics';
 class Listado extends Component {
 	constructor() {
     super()
@@ -19,6 +19,7 @@ class Listado extends Component {
        this.setState({ data_a: data, count:2})
       })
       this.handleCountClick = this.handleCountClick.bind(this);
+      logPageView();
   }
  
   handleCountClick(e) {
@@ -42,17 +43,21 @@ class Listado extends Component {
       })
       .then((data) => {
         this.setState({ data_a: data })
-        console.log(this.state.count);
+      //  console.log(this.state.count);
       })
      
-      console.log(this.state.count);
+   //   console.log(this.state.count);
   }
 
 	render(){
 		return(
 			<div>
 				<Title title="Materias"/>
+        <div className="col-md-3 p0 padding-top-40">
+        <div className="blog-asside-right pr0">
 				<Busqueda />
+        </div>
+        </div>
 				<Contenido listado={this.state.data_a}/>
 				<div className="col-md-12"> 
 					<div className="pull-right">
