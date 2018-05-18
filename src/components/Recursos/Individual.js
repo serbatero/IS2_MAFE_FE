@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Title from '../Global/Title';
 import Comentarios from '../Global/Comentarios.js';
 import ListaMaterias from './ListaMaterias.js';
+import ListaDocentes from './ListaDocentes.js';
 import FileBase64 from 'react-file-base64';
 import axios from 'axios';
 import store from '../../store';
@@ -132,7 +133,6 @@ constructor() {
 	  ],
 	}],
 };
-
 		if(localStorage.getItem('jwtToken')){
 		 const { pageNumber, numPages } = this.state;
 		
@@ -173,30 +173,27 @@ constructor() {
 										<div className="dealer-content">
 											<div className="inner-wrapper">
 												<div className="clear">
-												<div className="form-group">
-							<label  color='red'>Nombre(s) &nbsp; <font color='red'> {this.state.nombreErr}</font></label>
-							<input type="text" className="form-control" id="firstname" name ='nombre'value={this.state.nombre} onChange = {this.handleInput}onInput = {this.validar} onBlur = {this.validar}required/>                        
-						</div>
-						<div className="form-group">
-							<label >Descripcion &nbsp; <font>{this.state.mensajeErr}</font></label>
-							<textarea id="message" className="form-control" name='mensaje'value = {this.state.mensaje} onChange = {this.handleInput }></textarea>
-						</div>
-						<div className="form-group">
-							<label >Archivo del recurso: </label>
-						<FileBase64 className="form-control"
-					multiple={ false }
-					 onDone={ this.getFiles.bind(this) } />
-					 </div>
+													<div className="form-group">
+														<label  color='red'>Nombre(s) &nbsp; <font color='red'> {this.state.nombreErr}</font></label>
+														<input type="text" className="form-control" id="firstname" name ='nombre'value={this.state.nombre} onChange = {this.handleInput}onInput = {this.validar} onBlur = {this.validar}required/>                        
+													</div>
+													<div className="form-group">
+														<label >Descripcion &nbsp; <font>{this.state.mensajeErr}</font></label>
+														<textarea id="message" className="form-control" name='mensaje'value = {this.state.mensaje} onChange = {this.handleInput }></textarea>
+													</div>
+													<div className="form-group">
+														<label >Archivo del recurso: </label>
+													<FileBase64 className="form-control"
+														multiple={ false }
+						 								onDone={ this.getFiles.bind(this) } />
+						 							</div>
 													<div className="col-xs-4 col-sm-4 dealer-face">
 														<button type="submit" className="btn btn-primary" onClick ={this.ModificarRecurso}>Modificar recurso</button>
-								
-													</div>
-													
+													</div>													
 												</div>
 											</div>
 										</div>
 									</div>
-									
 								</aside>
 							</div>
 							<div className="col-md-4 p0">
@@ -204,11 +201,14 @@ constructor() {
 									<div className="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
 										<div className="panel-heading">
 											<h3 className="panel-title">Estadisticas</h3>
-												</div>
-											<div className="panel-body recent-property-widget">
-												<Doughnut data={doughnut} />
-													</div>
-														</div>
+										</div>
+										<div className="panel-body recent-property-widget">
+											<Doughnut data={doughnut} />
+										</div>
+									</div>
+									<ListaDocentes listado = {this.state.data_a.course_has_resources}/>
+									<ListaMaterias listado = {this.state.data_a.teacher_has_resources} />
+									
 								</aside>
 							</div>
 						</div>
@@ -259,7 +259,8 @@ constructor() {
 										<div className="panel-body recent-property-widget">
 											<Doughnut data={doughnut} />
 										</div>
-										<ListaMaterias listado = {this.state.data_a.teacher_has_courses}/>
+										<ListaDocentes listado = {this.state.data_a.teacher_has_resources}/>
+										<ListaMaterias listado = {this.state.data_a.course_has_resources}/>
 									</div>
 								</aside>
 							</div>
