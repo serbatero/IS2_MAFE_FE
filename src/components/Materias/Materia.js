@@ -15,7 +15,7 @@ class Materia extends Component {
 					<div className="item-thumb" >
 					<Link to={`/materias/${this.props.id}`}>
 						<img src={Image}  alt=""/>
-						</Link>
+					</Link>
 					</div>
 					<div className="item-entry overflow">
 						<h5>{this.props.name}</h5>

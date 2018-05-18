@@ -246,7 +246,7 @@ constructor() {
       											  <button type="submit"id="next" className="btn btn-primary" onClick ={this.paginacion}> Next</button>
 												</div>
 
-												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id"/>
+												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id" />
 											</section>
 										</div>
 									</div>
