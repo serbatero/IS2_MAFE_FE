@@ -10,12 +10,12 @@ class ListaMaterias extends Component {
 		return(
 			<div className="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
 				<div className="panel-heading">
-					<h3 className="panel-title">Materias Asocidos</h3>
+					<h3 className="panel-title">Materias Asociadas</h3>
 				</div>
 				<div className="panel-body recent-property-widget">
 					{this.props.listado.map((materia)=>{
 							return (
-							<MateriaAsociada key={materia.id} name={materia.course_name} id = {materia.course_id} likes = {materia.course_likes} />
+							<MateriaAsociada key={materia.id} name={materia.course_name} id = {materia.course_id} likes = {materia.likes_course} />
 							)
 						})
 					}

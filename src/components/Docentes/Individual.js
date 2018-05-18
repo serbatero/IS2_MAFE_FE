@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import Title from '../Global/Title';
 import Comentarios from '../Global/Comentarios.js';
 import ListaMaterias from './ListaMaterias.js';
+import ListaRecursos from './ListaRecursos.js';
 import Grafico from '../Global/Grafico';
 //Assets
 import baseURL from '../../url';
-import perfil from '../Global/images/perfil.png';
 import { Doughnut } from 'react-chartjs-2';
 import { logPageView } from '../../analytics';
 class Individual extends Component {
@@ -78,6 +78,7 @@ constructor() {
 										</div>
 									</div>
 									<ListaMaterias listado = {this.state.data_a.teacher_has_courses} />
+									<ListaRecursos listado = {this.state.data_a.teacher_has_resources} />
 								</aside>
 							</div>
 						</div>
