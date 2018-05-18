@@ -10,7 +10,7 @@ class ListaRecursos extends Component {
 			return(
 				<div className="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
 					<div className="panel-heading">
-						<h3 className="panel-title">Recursos Asocidos</h3>
+						<h3 className="panel-title">Recursos Asociados</h3>
 					</div>
 					<div className="panel-body recent-property-widget">
 						{this.props.listado.map((recurso)=>{
