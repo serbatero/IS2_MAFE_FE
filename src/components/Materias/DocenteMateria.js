@@ -19,7 +19,7 @@ class DocenteMateria extends Component {
 							<div className="clear">
 								<div className="col-xs-4 col-sm-4 dealer-face">
 									<Link to={`/docentes/${this.props.listado[0].teacher_id}`}>
-										<a><img src={perfil} className="img-circle" alt=""/></a>
+										<img src={perfil} className="img-circle" alt=""/>
 									</Link>
 								</div>
 								<div className="col-xs-8 col-sm-8 ">

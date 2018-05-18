@@ -46,6 +46,9 @@ constructor() {
       })
   }
 
+  tab(){
+    window.open('http://localhost:3000/teacherspdfs.pdf',"pdf", "width =650, height=670, scrollbars=YES")
+  }
 
 	render(){
 		return(
@@ -54,7 +57,7 @@ constructor() {
         <div className="col-md-3 p0 padding-top-40">
           <div className="blog-asside-right pr0">
 				    <Busqueda />
-          <a href='http://localhost:3000/teacherspdfs.pdf'><button type="submit" className="btn btn-default">Ver profesores en pdf</button></a> 
+            <button onClick ={this.tab}type="submit" className="btn btn-default">Ver docentes en pdf</button>
           </div>
 
         </div>

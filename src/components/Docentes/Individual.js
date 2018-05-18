@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import Title from '../Global/Title';
 import Comentarios from '../Global/Comentarios.js';
 import ListaMaterias from './ListaMaterias.js';
+import ListaRecursos from './ListaRecursos.js';
 import Grafico from '../Global/Grafico';
 //Assets
 import baseURL from '../../url';
-import perfil from '../Global/images/perfil.png';
 import { Doughnut } from 'react-chartjs-2';
 import { logPageView } from '../../analytics';
 class Individual extends Component {
@@ -69,38 +69,16 @@ constructor() {
 							</div>
 							<div className="col-md-4 p0">
 								<aside className="sidebar sidebar-property blog-asside-right">
-									<div className="dealer-widget">
-										<div className="dealer-content">
-											<div className="inner-wrapper">
-												<div className="clear">
-													<div className="col-xs-4 col-sm-4 dealer-face">
-														<a><img src={perfil} className="img-circle" alt=""/></a>
-													</div>
-													<div className="clear">
-														<ul className="dealer-contacts">
-															<li><i className="pe-7s-map-marker strong"> </i> 9089 your address </li>
-															<li><i className="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-															<li><i className="pe-7s-call strong"> </i> +1 908 967 5906</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-								</aside>
-							</div>
-							<div className="col-md-4 p0">
-								<aside className="sidebar sidebar-property blog-asside-right">
 									<div className="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
 										<div className="panel-heading">
 											<h3 className="panel-title">Estadisticas</h3>
-												</div>
-											<div className="panel-body recent-property-widget">
-												<Doughnut data={doughnut} />
-													</div>
-														</div>
-														<ListaMaterias/>
+										</div>
+										<div className="panel-body recent-property-widget">
+											<Doughnut data={doughnut} />
+										</div>
+									</div>
+									<ListaMaterias listado = {this.state.data_a.teacher_has_courses} />
+									<ListaRecursos listado = {this.state.data_a.teacher_has_resources} />
 								</aside>
 							</div>
 						</div>
