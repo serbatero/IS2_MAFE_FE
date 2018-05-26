@@ -64,7 +64,7 @@ constructor() {
 											<section id="comments" className="comments wow fadeInRight animated"> 
 												<h6 className="text wow fadeInLeft animated"><a>Description</a></h6>
 												<div className="s-property-content">
-													<p>Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                              </p>
+													<p>{this.state.data_a.description}</p>
 												</div>
 												<Comentarios listado = {this.state.data_a.commentcourses} post_id={this.props.match.params.id} type = "course_id"/>
 											</section>
