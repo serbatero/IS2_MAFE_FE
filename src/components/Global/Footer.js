@@ -14,14 +14,14 @@ class Footer extends Component {
 			data_a: []
 		}
 		 fetch(`${baseURL}/best`)
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
-       this.setState({ data_a: data})
-       console.log(data)
-      })
-    
+			.then((response) => {
+				return response.json()
+			})
+			.then((data) => {
+			 this.setState({ data_a: data})
+			 console.log(data)
+			})
+		
 
 	}
 	componentWillMount(){
@@ -75,15 +75,7 @@ class Footer extends Component {
 								<div className="single-footer news-letter">
 									<h4>Suscribase</h4>
 									<div className="footer-title-line" />
-									<p>Lorem ipsum dolor sit amet, nulla  suscipit similique quisquam molestias. Vel unde, blanditiis.</p>
-									<form>
-										<div className="input-group">
-											<input className="form-control" type="text" placeholder="E-mail ... " />
-											<span className="input-group-btn">
-												<button className="btn btn-primary subscribe" type="button"><i className="pe-7s-paper-plane pe-2x" /></button>
-											</span>
-										</div>
-									</form> 
+										<p>Lorem ipsum dolor sit amet, nulla  suscipit similique quisquam molestias. Vel unde, blanditiis.</p>
 									<div className="social pull-right"> 
 										<ul>
 											<li><a className="wow fadeInUp animated" href="/"><i className="fa fa-twitter" /></a></li>
@@ -103,7 +95,6 @@ class Footer extends Component {
 								<span> (C) <a href="/">MAFE</a> , Todos los derechos reservados 2018</span> 
 							</div> 
 							<div className="bottom-menu pull-right"> 
-						 
 								<ul> 
 									 {
 										 items && items.map(

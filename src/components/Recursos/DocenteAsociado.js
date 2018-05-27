@@ -14,7 +14,7 @@ class DocenteAsociado extends Component {
 				<li>
 					<div className="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
 						<Link to={`/docentes/${this.props.id}`}>
-							<a><img src={perfil} alt=""/></a>
+							<img src={perfil} alt=""/>
 						</Link>
 					</div>
 					<div className="col-md-8 col-sm-8 col-xs-8 blg-entry">

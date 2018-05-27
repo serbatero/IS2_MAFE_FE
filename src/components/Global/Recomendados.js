@@ -15,14 +15,14 @@ class Recomendados extends Component {
 							<ul className="footer-blog">
 								{this.props.listado.map((recomendado)=>{
 										return (
-										<Recomendado key={recomendado.id} name={recomendado.name} id = {recomendado.id} link = {recomendado.link} likes = {recomendado.likes} />
+										<Recomendado key={recomendado.id} name={recomendado.name} id = {recomendado.id} link = {recomendado.link} likes = {recomendado.likes} date = {recomendado.created_at.substring(0,10)}  />
 										)
 									})
 								}					
 							</ul>
 					</div>
 				</div>
-			);	
+			);
 		}
 	}
 }

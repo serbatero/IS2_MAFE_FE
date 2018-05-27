@@ -7,13 +7,13 @@ import Image from '../Global/images/book1.png';
 class Recomendados extends Component {
 	
 	render() {
-		return (				
+		return (
 				<li>
 					<div className="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
 						<Link to={`/recursos/${this.props.id}`}>
 							<img src={Image}  alt=""/>
 						</Link>
-						<span className="blg-date">12-12-2016</span>
+						<span className="blg-date">{this.props.date} </span>
 					</div>
 					<div className="col-md-8  col-sm-8 col-xs-8  blg-entry">
 						<h6>{this.props.name}</h6> 
