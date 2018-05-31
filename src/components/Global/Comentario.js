@@ -1,4 +1,3 @@
-// Dependencias
 import React, { Component } from 'react';
 import swal from 'sweetalert2';
 import axios from 'axios';
@@ -23,6 +22,7 @@ class Comentario extends Component {
       	  setTimeout(function(){document.location.reload()},1000);
         })
         .catch(function (error) {
+        	swal("Ya ha hecho una calificación",'','error');
         console.log(error);
        });
 	}
@@ -39,6 +39,7 @@ class Comentario extends Component {
       	  setTimeout(function(){document.location.reload()},1000);
         })
         .catch(function (error) {
+        	swal("Ya ha hecho una calificación",'','error');
         console.log(error);
        });
 	}

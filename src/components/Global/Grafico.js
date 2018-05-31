@@ -29,9 +29,11 @@ class Grafico extends Component {
        	.then(function (response) {
       	 //  this.setState({response});
       	 swal("Su calificacion ha sido completada",'','success');
-      	  setTimeout(function(){document.location.reload()},1000);
+         console.log(response)
+      	  //setTimeout(function(){document.location.reload()},1000);
         })
         .catch(function (error) {
+          swal("Ya ha hecho una calificación",'','error');
         console.log(error);
        });
 

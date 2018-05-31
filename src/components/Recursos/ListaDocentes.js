@@ -5,13 +5,12 @@ import DocenteAsociado from './DocenteAsociado.js';
 
 class ListaDocentes extends Component {
 	render(){
-		console.log(this.props.listado)
 		if(this.props.listado === undefined){return(<div></div>)}
 		else{
 		return(
 			<div className="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
 				<div className="panel-heading">
-					<h3 className="panel-title">Docentes Asociados </h3>
+					<h3 className="panel-title">Docentes Asociadas </h3>
 				</div>
 				<div className="panel-body recent-property-widget">
 					{this.props.listado.map((docente)=>{

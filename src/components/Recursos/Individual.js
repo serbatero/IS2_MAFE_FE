@@ -114,9 +114,6 @@ constructor() {
 			this.setState({pageNumber: this.state.numPages})
 		}
 	}
-	tab=()=>{
-    window.open(this.state.data_a.link,"pdf", "width =650, height=670, scrollbars=YES")
-  }
 	render() {
 		const doughnut = {
   labels: [
@@ -135,7 +132,7 @@ constructor() {
 		'#5cd65c',
 	  ],
 	}],
-};	
+};
 		if(localStorage.getItem('jwtToken')){
 		 const { pageNumber, numPages } = this.state;
 		
@@ -149,8 +146,8 @@ constructor() {
 								<div className="single-property-wrapper">
 									
 									<div className="single-property-header">
-									<Grafico data={this.state.data_a} type="resource_id"/>
-										 <a  onClick ={this.tab}><h3><b>Visualizar documento:</b></h3></a>
+									<Grafico valor="resources" data={this.state.data_a} type="resource_id"/>
+										 <a href={this.state.data_a.link}><h3><b>Visualizar documento:</b></h3></a>
 
 										<div className="section">
 											<section id="comments" className="comments wow fadeInRight animated"> 
@@ -164,7 +161,7 @@ constructor() {
 												  <button type="submit"id="prev" className="btn btn-primary" onClick ={this.paginacion}> Prev</button>
 												  <button type="submit"id="next" className="btn btn-primary" onClick ={this.paginacion}> Next</button>
 												</div>
-												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id" valor="resources"/>
+												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id" valor= "resources"/>
 											</section>
 										</div>
 									</div>
@@ -209,8 +206,8 @@ constructor() {
 											<Doughnut data={doughnut} />
 										</div>
 									</div>
-									<ListaDocentes listado = {this.state.data_a.teacher_has_resources}/>
-									<ListaMaterias listado = {this.state.data_a.course_has_resources} />
+									<ListaDocentes listado = {this.state.data_a.course_has_resources}/>
+									<ListaMaterias listado = {this.state.data_a.teacher_has_resources} />
 									
 								</aside>
 							</div>
@@ -232,7 +229,7 @@ constructor() {
 								<div className="single-property-wrapper">
 									
 									<div className="single-property-header">
-									<Grafico data={this.state.data_a} type="resource_id"/>
+									<Grafico valor="resources" data={this.state.data_a} type="resource_id"/>
 										 <a href={this.state.data_a.link}><h3><b>Visualizar documento:</b></h3></a>
 										   
 										<div className="section">
@@ -247,7 +244,7 @@ constructor() {
 												  <button type="submit"id="prev" className="btn btn-primary" onClick ={this.paginacion}> Prev</button>
 												  <button type="submit"id="next" className="btn btn-primary" onClick ={this.paginacion}> Next</button>
 												</div>
-												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id" valor="resources"/>
+												<Comentarios listado = {this.state.data_a.commentresources} post_id={this.props.match.params.id} type="resource_id"/>
 											</section>
 										</div>
 									</div>
@@ -262,7 +259,6 @@ constructor() {
 										<div className="panel-body recent-property-widget">
 											<Doughnut data={doughnut} />
 										</div>
-
 										<ListaDocentes listado = {this.state.data_a.teacher_has_resources}/>
 										<ListaMaterias listado = {this.state.data_a.course_has_resources}/>
 									</div>

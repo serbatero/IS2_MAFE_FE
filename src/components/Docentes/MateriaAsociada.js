@@ -17,7 +17,7 @@ class MateriaAsociada extends Component {
 						</Link>
 					</div>
 					<div className="col-md-8 col-sm-8 col-xs-8 blg-entry">
-						<h6> {this.props.name}</h6>
+						<h6> <a>{this.props.name}</a></h6>
 						<span className="property-price"><b><font color="green" size={3}>Likes</font> <font color="green" size={2}>{this.props.likes}</font></b></span>
 					</div>
 				</li>

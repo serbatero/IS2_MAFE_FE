@@ -54,14 +54,14 @@ constructor() {
 							<div className="col-md-8 single-property-content ">
 								<div className="single-property-wrapper">
 									<div className="single-property-header">
-									<Grafico data={this.state.data_a} type="teacher_id"/>
+									<Grafico valor="teachers" data={this.state.data_a} post_id={this.props.match.params.id} type="teacher_id"/>
 										<div className="section">
 											<section id="comments" className="comments wow fadeInRight animated"> 
 												<h6 className="text wow fadeInLeft animated"><a>Description</a></h6>
 												<div className="s-property-content">
 													<p>{this.state.data_a.description}</p>
 												</div>
-												<Comentarios listado = {this.state.data_a.commentteachers} post_id={this.props.match.params.id} type="teacher_id" valor="teachers"/>
+												<Comentarios valor="teachers" listado = {this.state.data_a.commentteachers} post_id={this.props.match.params.id} type="teacher_id"/>
 											</section>
 										</div>
 									</div>

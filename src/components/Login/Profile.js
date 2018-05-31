@@ -33,7 +33,7 @@ handleInput(e){
     };
 
 onSubmit(e){
-  if(this.state.nombre === '' || this.state.correo === ''){
+  if(this.state.nombre === '' && this.state.correo === ''){
     swal({title:'No haz cambiado ningún campo', type:'warning'})
   }else{
 

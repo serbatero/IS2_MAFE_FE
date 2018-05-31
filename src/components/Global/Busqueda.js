@@ -5,7 +5,7 @@ import swal from 'sweetalert2';
 class Busqueda extends Component {
 	constructor() {
     super()
-    this.state = {  value: "teacher", texto: ""}
+    this.state = {  value: "teacher", texto: "",likes:0}
     
   }
 
@@ -19,6 +19,10 @@ class Busqueda extends Component {
         console.log(e.target.value)
       this.setState({texto: e.target.value});
       }
+      if(e.target.id==="likes"){
+        console.log(e.target.value)
+      this.setState({likes: e.target.value});
+      }
   }
   realizarBusqueda=(e)=>{
    // console.log(this.state)
@@ -31,7 +35,9 @@ class Busqueda extends Component {
       ruta = "materias";
      let axiosConfig = {headers: {'Content-Type': 'application/json;'}};
         axios.post(`${baseURL}/search`, {
-         [`${this.state.value}_name`]: this.state.texto
+         [`${this.state.value}_name`]: this.state.texto,
+         likes: this.state.likes
+
        }, axiosConfig)
        .then(function (response) {
        	
@@ -66,6 +72,7 @@ class Busqueda extends Component {
 								<fieldset>
 									<div className="row">
 										<div className="col-xs-6">
+										<label >Tipo de busqueda:</label>
 										<select id="basic" className="selectpicker show-tick form-control" onChange={this.cambiarEstado} >
                      				    <option value ="teacher">Docentes</option>
                       					<option value ="course">Materias</option>
@@ -73,10 +80,9 @@ class Busqueda extends Component {
                                         </select>
 										</div>
 										<div className="col-xs-6">
-											<label >Score rango:</label>
-											<input type="text" className="span2" value="" data-slider-min="0" data-slider-max="5" data-slider-step="1" data-slider-value="[0,5]" id="price-range" /><br />
-											<b className="pull-left color">0</b>
-											<b className="pull-right color">500</b>
+											<label >Likes Minimos:</label>
+											<input type="text" id="likes" onChange={this.cambiarEstado} value={this.state.text} className="form-control" placeholder="Likes minimos..."/>
+										
 										</div>
 									</div>
 								</fieldset>

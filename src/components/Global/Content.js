@@ -9,7 +9,7 @@ import Contacto from '../Contacto';
 import Login from '../Login';
 import Register from '../Login/Registerform';
 import Page404 from '../Page404';
-import store from '../../store'
+import store from '../../store';
 const PrivateRoute = ({ component: Component, ...rest }) => (
 
   <Route {...rest} render={(props) => (
