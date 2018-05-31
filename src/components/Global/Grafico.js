@@ -9,14 +9,33 @@ import axios from 'axios';
 
 
 class Grafico extends Component {
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state ={
-			value : 1
+			value : 1,
+      data: []
 		}
+    
 	}
+  componentWillMount(){
+    
+    fetch(`${baseURL}/${this.props.valor}/${this.props.post_id}`)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+       if(this.props.valor === "resources"){
+       this.setState({ data: data})
+       }
+       if(this.props.valor === "teachers"){
+       this.setState({ data: data})
+       }
+       if(this.props.valor ===  "courses"){
+       this.setState({ data: data})
+       }
+      })
+  }
  cambiarEstado=(e)=>{  
- 	
       this.setState({value: e.target.value});
   }
   calificar=(e)=>{
@@ -36,19 +55,50 @@ class Grafico extends Component {
           swal("Ya ha hecho una calificación",'','error');
         console.log(error);
        });
+         fetch(`${baseURL}/${this.props.valor}/${this.props.post_id}`)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+       if(this.props.valor === "resources"){
+       this.setState({ data: data})
+       }
+       if(this.props.valor === "teachers"){
+       this.setState({ data: data})
+       }
+       if(this.props.valor ===  "courses"){
+       this.setState({ data: data})
+       }
+      })
+       fetch(`${baseURL}/${this.props.valor}/${this.props.post_id}`)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+       if(this.props.valor === "resources"){
+       this.setState({ data: data})
+       }
+       if(this.props.valor === "teachers"){
+       this.setState({ data: data})
+       }
+       if(this.props.valor ===  "courses"){
+       this.setState({ data: data})
+       }
+      })
 
   }
 	render(){
 
 const polar = {
+
   datasets: [
     {
       data: [
-        this.props.data.malo,
-        this.props.data.regular,
-        this.props.data.medio,
-        this.props.data.bueno,
-        this.props.data.excelente,
+        this.state.data.malo,
+        this.state.data.regular,
+        this.state.data.medio,
+        this.state.data.bueno,
+        this.state.data.excelente,
       ],
       backgroundColor: [
         '#FF6384',

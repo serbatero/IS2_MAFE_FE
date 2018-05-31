@@ -4,9 +4,10 @@ import axios from 'axios';
 import store from '../../store';
 import baseURL from '../../url'
 import swal from 'sweetalert2'
+import ReCAPTCHA from 'react-google-recaptcha';
 //Componentes
 import Comentario from './Comentario.js';
-
+//npm install --save react-google-recaptcha react-async-script
 class Comentarios extends Component {
 	constructor(){
 		super()
@@ -106,8 +107,12 @@ class Comentarios extends Component {
 	actualizarTexto=(e)=>{
 		this.setState({texto: e.target.value});
 	}
-	
+	 cambio(value) {
+  console.log("Captcha value:", value);
+
+}
 	render(){
+
 		//console.log(this.state)
 		if(localStorage.getItem('jwtToken')){
 			//console.log(this.state.data_a)
@@ -116,7 +121,7 @@ class Comentarios extends Component {
 		return(
 			<div>	
 			<h6 className="text wow fadeInLeft animated">Comentarios</h6>
-			{this.state.data_a.map((comentario)=>{return(<Comentario type={this.props.type}avatar={comentario.image}key={comentario.id} name={comentario.user} date={comentario.date} comment = {comentario.comment} id={comentario.id} likes={comentario.likes} dislikes={comentario.dislikes} />)})}
+			{this.state.data_a.map((comentario)=>{return(<Comentario valor={this.props.valor} post_id={this.props.post_id} type={this.props.type}avatar={comentario.image}key={comentario.id} name={comentario.user} date={comentario.date} comment = {comentario.comment} id={comentario.id} likes={comentario.likes} dislikes={comentario.dislikes} />)})}
 				<section id="comment-form" className="add-comments">
 					<div>
 						<div className="row wow fadeInRight animated">
@@ -130,8 +135,14 @@ class Comentarios extends Component {
 						</div>
 						<div className="row wow fadeInRight animated">
 							<div className="col-sm-12 text-right">
+							 <ReCAPTCHA
+    ref="recaptcha"
+    sitekey="6Ldsc1wUAAAAAEiVmREb4Q1R3nGJVJ-mNIWqndUN"
+    onChange={this.cambio}
+  />
 								<button className="btn btn-primary" onClick={this.enviarComentario}><i className="fa fa-comment-o" /> Comentar</button>
 							</div>
+							    
 						</div>
 					</div>
 				</section>

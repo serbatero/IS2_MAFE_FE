@@ -146,7 +146,7 @@ constructor() {
 								<div className="single-property-wrapper">
 									
 									<div className="single-property-header">
-									<Grafico valor="resources" data={this.state.data_a} type="resource_id"/>
+									<Grafico valor="resources" post_id={this.props.match.params.id} data={this.state.data_a} type="resource_id"/>
 										 <a href={this.state.data_a.link}><h3><b>Visualizar documento:</b></h3></a>
 
 										<div className="section">

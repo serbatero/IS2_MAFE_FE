@@ -41,7 +41,8 @@ class Inicio extends Component {
       ruta = "materias";
      let axiosConfig = {headers: {'Content-Type': 'application/json;'}};
         axios.post(`${baseURL}/search`, {
-         [`${this.state.value}_name`]: this.state.texto
+         [`${this.state.value}_name`]: this.state.texto,
+         likes: 0
        }, axiosConfig)
        .then(function (response) {
         

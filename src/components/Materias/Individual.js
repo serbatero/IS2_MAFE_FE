@@ -59,7 +59,7 @@ constructor() {
 								<div className="single-property-wrapper">
 									<div className="single-property-header">
 										<h3><b>Codigo: {this.state.data_a.code}</b></h3>
-										<Grafico valor="courses" type = "course_id"  data={this.state.data_a} />
+										<Grafico valor="courses" type = "course_id"  post_id={this.props.match.params.id} data={this.state.data_a} />
 										<div className="section">
 											<section id="comments" className="comments wow fadeInRight animated"> 
 												<h6 className="text wow fadeInLeft animated"><a>Description</a></h6>

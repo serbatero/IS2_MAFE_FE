@@ -51,7 +51,7 @@ class Listado extends Component {
 	}
 	
 	tab(){
-		window.open("http://localhost:3000/resourcespdfs.pdf","pdf", "width =650, height=670, scrollbars=YES")
+		window.open(`${baseURL}/resourcespdfs.pdf`,"pdf", "width =650, height=670, scrollbars=YES")
 	}
 
 

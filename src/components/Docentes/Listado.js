@@ -47,7 +47,7 @@ constructor() {
   }
 
   tab(){
-    window.open('http://localhost:3000/teacherspdfs.pdf',"pdf", "width =650, height=670, scrollbars=YES")
+    window.open(`${baseURL}/teacherspdfs.pdf`,"pdf", "width =650, height=670, scrollbars=YES")
   }
 
 	render(){
