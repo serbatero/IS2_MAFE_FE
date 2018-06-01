@@ -14,7 +14,8 @@ class Comentarios extends Component {
 		this.state ={
 			texto: "",
 			errTexto:"",
-			data_a:[]
+			data_a:[],
+			catcha: null
 		}
 	}
 
@@ -41,8 +42,10 @@ class Comentarios extends Component {
 
 
 	enviarComentario=(e)=>{
-
-		if(this.state.errTexto !== ''){
+		console.log(this.state.catcha)
+		if(this.state.catcha === null){
+			swal('Comprueba el ReCAPTCHA','', 'warning');
+		}else{ if(this.state.errTexto !== ''){
 			swal('Reduce el contenido de tu comentario','', 'error');
 		}else if(this.state.texto === ""){
 			swal('Escribe un comentario','','warning')
@@ -94,8 +97,8 @@ class Comentarios extends Component {
 			 }
 			})
 			this.setState({texto: ""});
-    }
-
+    	}
+      }
 
 	}
 	valida(e){
@@ -107,9 +110,9 @@ class Comentarios extends Component {
 	actualizarTexto=(e)=>{
 		this.setState({texto: e.target.value});
 	}
-	 cambio(value) {
+	 cambio=(value)=> {
   console.log("Captcha value:", value);
-
+  		this.setState({catcha: value});
 }
 	render(){
 
